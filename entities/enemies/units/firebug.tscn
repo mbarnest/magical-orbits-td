@@ -206,7 +206,6 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_prjjb")
 animation = &"die"
 autoplay = "walk"
-frame = 0
 frame_progress = 0.80809504
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1803021380]

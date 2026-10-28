@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dw17ncy2opjlm" path="res://entities/enemies/base/enemy.gd" id="1_yc03e"]
 [ext_resource type="Script" uid="uid://c27lu6bjutm2x" path="res://fsm/state_machine.gd" id="2_prjjb"]
-[ext_resource type="Script" uid="uid://dwhncfr5uhr74" path="res://entities/enemies/base/enemy_move.gd" id="3_prjjb"]
+[ext_resource type="Script" uid="uid://dwhncfr5uhr74" path="res://entities/enemies/base/states/enemy_move.gd" id="3_prjjb"]
+[ext_resource type="Script" uid="uid://8ism7tyx8835" path="res://entities/enemies/base/states/enemy_orbit.gd" id="4_g5cbx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bp71r"]
 animations = [{
@@ -33,3 +34,12 @@ metadata/_custom_type_script = "uid://c27lu6bjutm2x"
 
 [node name="Move" type="Node" parent="StateMachine" unique_id=1788930881]
 script = ExtResource("3_prjjb")
+
+[node name="Orbit" type="Node" parent="StateMachine" unique_id=1821493064]
+script = ExtResource("4_g5cbx")
+
+[node name="StateLabel" type="Label" parent="." unique_id=1557385115]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -17.0

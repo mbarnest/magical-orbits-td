@@ -1,5 +1,7 @@
 class_name StateMachine extends Node
 
+signal state_changed(new_state_name: String)
+
 # Initial state set from the Inspector
 @export var initial_state: State
 var current_state: State
@@ -14,6 +16,7 @@ func _ready() -> void:
 	if initial_state:
 		current_state = initial_state
 		current_state.enter()
+		state_changed.emit(current_state.name)
 
 func _physics_process(delta: float) -> void:
 	# Delegate physics update to active state
@@ -28,3 +31,5 @@ func _on_transition_requested(target_state_name: String, msg := {}) -> void:
 		current_state.exit()
 	current_state = get_node(target_state_name) as State
 	current_state.enter(msg)
+
+	state_changed.emit(current_state.name)

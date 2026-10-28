@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://vt4tef5761rg"]
+
+[ext_resource type="Script" uid="uid://cyk7fua10aldb" path="res://test_scenes/test_orbit.gd" id="1_fsnio"]
+[ext_resource type="PackedScene" uid="uid://brukt14jhkvpx" path="res://entities/enemies/units/firebug.tscn" id="2_35vaj"]
+[ext_resource type="Texture2D" uid="uid://bsbfl80srvtr6" path="res://icon.svg" id="3_vqdh1"]
+
+[node name="TestOrbit" type="Node2D" unique_id=719864351]
+script = ExtResource("1_fsnio")
+
+[node name="Firebug" parent="." unique_id=1204108137 instance=ExtResource("2_35vaj")]
+position = Vector2(135, 333)
+
+[node name="Firebug2" parent="." unique_id=1676530835 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 286)
+
+[node name="Firebug3" parent="." unique_id=1503550058 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 239)
+
+[node name="Firebug4" parent="." unique_id=403270009 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 182)
+
+[node name="Firebug5" parent="." unique_id=862084360 instance=ExtResource("2_35vaj")]
+position = Vector2(132, 134)
+
+[node name="Firebug6" parent="." unique_id=975382130 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 92)
+
+[node name="Firebug7" parent="." unique_id=199067036 instance=ExtResource("2_35vaj")]
+position = Vector2(132, 48)
+
+[node name="Firebug8" parent="." unique_id=563615501 instance=ExtResource("2_35vaj")]
+position = Vector2(132, 55)
+
+[node name="Firebug9" parent="." unique_id=2036776393 instance=ExtResource("2_35vaj")]
+position = Vector2(104, 136)
+
+[node name="Firebug10" parent="." unique_id=1228727424 instance=ExtResource("2_35vaj")]
+position = Vector2(97, 391)
+
+[node name="Firebug11" parent="." unique_id=1889871403 instance=ExtResource("2_35vaj")]
+position = Vector2(104, 426)
+
+[node name="Firebug12" parent="." unique_id=1566634099 instance=ExtResource("2_35vaj")]
+position = Vector2(116, 458)
+
+[node name="Firebug13" parent="." unique_id=892089865 instance=ExtResource("2_35vaj")]
+position = Vector2(116, 458)
+
+[node name="Firebug14" parent="." unique_id=931476650 instance=ExtResource("2_35vaj")]
+position = Vector2(126, 518)
+
+[node name="Firebug15" parent="." unique_id=636286910 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 557)
+
+[node name="Firebug16" parent="." unique_id=2094982792 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 589)
+
+[node name="Firebug17" parent="." unique_id=1517430507 instance=ExtResource("2_35vaj")]
+position = Vector2(133, 620)
+
+[node name="Firebug18" parent="." unique_id=1625607062 instance=ExtResource("2_35vaj")]
+position = Vector2(154, 427)
+
+[node name="Firebug19" parent="." unique_id=744774330 instance=ExtResource("2_35vaj")]
+position = Vector2(178, 461)
+
+[node name="Firebug20" parent="." unique_id=608707505 instance=ExtResource("2_35vaj")]
+position = Vector2(199, 519)
+
+[node name="Firebug21" parent="." unique_id=924992811 instance=ExtResource("2_35vaj")]
+position = Vector2(212, 574)
+
+[node name="Firebug22" parent="." unique_id=2136039612 instance=ExtResource("2_35vaj")]
+position = Vector2(231, 617)
+
+[node name="Firebug23" parent="." unique_id=1209314648 instance=ExtResource("2_35vaj")]
+position = Vector2(207, 340)
+
+[node name="Firebug24" parent="." unique_id=1582035579 instance=ExtResource("2_35vaj")]
+position = Vector2(56, 329)
+
+[node name="Firebug25" parent="." unique_id=214094999 instance=ExtResource("2_35vaj")]
+position = Vector2(53, 292)
+
+[node name="Firebug26" parent="." unique_id=1001753186 instance=ExtResource("2_35vaj")]
+position = Vector2(51, 260)
+
+[node name="Firebug27" parent="." unique_id=1471444497 instance=ExtResource("2_35vaj")]
+position = Vector2(49, 229)
+
+[node name="Firebug28" parent="." unique_id=28807039 instance=ExtResource("2_35vaj")]
+position = Vector2(57, 186)
+
+[node name="Firebug29" parent="." unique_id=1846321294 instance=ExtResource("2_35vaj")]
+position = Vector2(192, 172)
+
+[node name="Firebug30" parent="." unique_id=732076453 instance=ExtResource("2_35vaj")]
+position = Vector2(198, 219)
+
+[node name="Firebug31" parent="." unique_id=983233650 instance=ExtResource("2_35vaj")]
+position = Vector2(203, 266)
+
+[node name="Firebug32" parent="." unique_id=1325660704 instance=ExtResource("2_35vaj")]
+position = Vector2(198, 119)
+
+[node name="Firebug33" parent="." unique_id=355658181 instance=ExtResource("2_35vaj")]
+position = Vector2(204, 67)
+
+[node name="Firebug34" parent="." unique_id=1079401143 instance=ExtResource("2_35vaj")]
+position = Vector2(67, 38)
+
+[node name="Firebug35" parent="." unique_id=1025573129 instance=ExtResource("2_35vaj")]
+position = Vector2(44, 85)
+
+[node name="Firebug36" parent="." unique_id=1690526869 instance=ExtResource("2_35vaj")]
+position = Vector2(41, 125)
+
+[node name="Firebug37" parent="." unique_id=552362682 instance=ExtResource("2_35vaj")]
+position = Vector2(39, 466)
+
+[node name="Firebug38" parent="." unique_id=1531867427 instance=ExtResource("2_35vaj")]
+position = Vector2(33, 421)
+
+[node name="Firebug39" parent="." unique_id=2087361389 instance=ExtResource("2_35vaj")]
+position = Vector2(39, 479)
+
+[node name="Firebug40" parent="." unique_id=159286653 instance=ExtResource("2_35vaj")]
+position = Vector2(45, 563)
+
+[node name="Firebug41" parent="." unique_id=1364616302 instance=ExtResource("2_35vaj")]
+position = Vector2(37, 524)
+
+[node name="Firebug42" parent="." unique_id=676767939 instance=ExtResource("2_35vaj")]
+position = Vector2(48, 613)
+
+[node name="Firebug43" parent="." unique_id=647974657 instance=ExtResource("2_35vaj")]
+position = Vector2(369, 333)
+
+[node name="Firebug44" parent="." unique_id=847451848 instance=ExtResource("2_35vaj")]
+position = Vector2(365, 286)
+
+[node name="Firebug45" parent="." unique_id=2129909608 instance=ExtResource("2_35vaj")]
+position = Vector2(365, 239)
+
+[node name="Firebug46" parent="." unique_id=139740135 instance=ExtResource("2_35vaj")]
+position = Vector2(365, 182)
+
+[node name="Firebug47" parent="." unique_id=1607017163 instance=ExtResource("2_35vaj")]
+position = Vector2(366, 134)
+
+[node name="Firebug48" parent="." unique_id=1926746715 instance=ExtResource("2_35vaj")]
+position = Vector2(365, 92)
+
+[node name="Firebug49" parent="." unique_id=646519518 instance=ExtResource("2_35vaj")]
+position = Vector2(366, 48)
+
+[node name="Firebug50" parent="." unique_id=1073412632 instance=ExtResource("2_35vaj")]
+position = Vector2(366, 55)
+
+[node name="Firebug51" parent="." unique_id=1843178023 instance=ExtResource("2_35vaj")]
+position = Vector2(338, 136)
+
+[node name="Firebug52" parent="." unique_id=2000273923 instance=ExtResource("2_35vaj")]
+position = Vector2(331, 391)
+
+[node name="Firebug53" parent="." unique_id=496477975 instance=ExtResource("2_35vaj")]
+position = Vector2(338, 426)
+
+[node name="Firebug54" parent="." unique_id=1699066217 instance=ExtResource("2_35vaj")]
+position = Vector2(350, 458)
+
+[node name="Firebug55" parent="." unique_id=1741744198 instance=ExtResource("2_35vaj")]
+position = Vector2(350, 458)
+
+[node name="Firebug56" parent="." unique_id=193668921 instance=ExtResource("2_35vaj")]
+position = Vector2(360, 518)
+
+[node name="Firebug57" parent="." unique_id=794310132 instance=ExtResource("2_35vaj")]
+position = Vector2(365, 557)
+
+[node name="Firebug58" parent="." unique_id=924685811 instance=ExtResource("2_35vaj")]
+position = Vector2(365, 589)
+
+[node name="Firebug59" parent="." unique_id=533443795 instance=ExtResource("2_35vaj")]
+position = Vector2(367, 620)
+
+[node name="Firebug60" parent="." unique_id=1543416675 instance=ExtResource("2_35vaj")]
+position = Vector2(388, 427)
+
+[node name="Firebug61" parent="." unique_id=336325601 instance=ExtResource("2_35vaj")]
+position = Vector2(412, 461)
+
+[node name="Firebug62" parent="." unique_id=1174793575 instance=ExtResource("2_35vaj")]
+position = Vector2(433, 519)
+
+[node name="Firebug63" parent="." unique_id=1519062380 instance=ExtResource("2_35vaj")]
+position = Vector2(446, 574)
+
+[node name="Firebug64" parent="." unique_id=1211445797 instance=ExtResource("2_35vaj")]
+position = Vector2(465, 617)
+
+[node name="Firebug65" parent="." unique_id=2115370758 instance=ExtResource("2_35vaj")]
+position = Vector2(441, 340)
+
+[node name="Firebug66" parent="." unique_id=1602920406 instance=ExtResource("2_35vaj")]
+position = Vector2(290, 329)
+
+[node name="Firebug67" parent="." unique_id=498624415 instance=ExtResource("2_35vaj")]
+position = Vector2(287, 292)
+
+[node name="Firebug68" parent="." unique_id=1517556457 instance=ExtResource("2_35vaj")]
+position = Vector2(285, 260)
+
+[node name="Firebug69" parent="." unique_id=1718724926 instance=ExtResource("2_35vaj")]
+position = Vector2(283, 229)
+
+[node name="Firebug70" parent="." unique_id=502828483 instance=ExtResource("2_35vaj")]
+position = Vector2(291, 186)
+
+[node name="Firebug71" parent="." unique_id=1840105655 instance=ExtResource("2_35vaj")]
+position = Vector2(426, 172)
+
+[node name="Firebug72" parent="." unique_id=469124044 instance=ExtResource("2_35vaj")]
+position = Vector2(432, 219)
+
+[node name="Firebug73" parent="." unique_id=239953217 instance=ExtResource("2_35vaj")]
+position = Vector2(437, 266)
+
+[node name="Firebug74" parent="." unique_id=2115186101 instance=ExtResource("2_35vaj")]
+position = Vector2(432, 119)
+
+[node name="Firebug75" parent="." unique_id=1329993721 instance=ExtResource("2_35vaj")]
+position = Vector2(438, 67)
+
+[node name="Firebug76" parent="." unique_id=1018292158 instance=ExtResource("2_35vaj")]
+position = Vector2(301, 38)
+
+[node name="Firebug77" parent="." unique_id=1722683593 instance=ExtResource("2_35vaj")]
+position = Vector2(278, 85)
+
+[node name="Firebug78" parent="." unique_id=1111497528 instance=ExtResource("2_35vaj")]
+position = Vector2(275, 125)
+
+[node name="Firebug79" parent="." unique_id=405295276 instance=ExtResource("2_35vaj")]
+position = Vector2(273, 466)
+
+[node name="Firebug80" parent="." unique_id=1413093495 instance=ExtResource("2_35vaj")]
+position = Vector2(267, 421)
+
+[node name="Firebug81" parent="." unique_id=709693598 instance=ExtResource("2_35vaj")]
+position = Vector2(273, 479)
+
+[node name="Firebug82" parent="." unique_id=1381160683 instance=ExtResource("2_35vaj")]
+position = Vector2(279, 563)
+
+[node name="Firebug83" parent="." unique_id=539943266 instance=ExtResource("2_35vaj")]
+position = Vector2(271, 524)
+
+[node name="Firebug84" parent="." unique_id=921830622 instance=ExtResource("2_35vaj")]
+position = Vector2(282, 613)
+
+[node name="Firebug85" parent="." unique_id=663358980 instance=ExtResource("2_35vaj")]
+position = Vector2(135, 333)
+
+[node name="Firebug86" parent="." unique_id=1260989064 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 286)
+
+[node name="Firebug87" parent="." unique_id=1342747028 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 239)
+
+[node name="Firebug88" parent="." unique_id=273742582 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 182)
+
+[node name="Firebug89" parent="." unique_id=745617465 instance=ExtResource("2_35vaj")]
+position = Vector2(132, 134)
+
+[node name="Firebug90" parent="." unique_id=677576051 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 92)
+
+[node name="Firebug91" parent="." unique_id=1391048712 instance=ExtResource("2_35vaj")]
+position = Vector2(132, 48)
+
+[node name="Firebug92" parent="." unique_id=1912613953 instance=ExtResource("2_35vaj")]
+position = Vector2(132, 55)
+
+[node name="Firebug93" parent="." unique_id=1897912057 instance=ExtResource("2_35vaj")]
+position = Vector2(104, 136)
+
+[node name="Firebug94" parent="." unique_id=532496896 instance=ExtResource("2_35vaj")]
+position = Vector2(97, 391)
+
+[node name="Firebug95" parent="." unique_id=1767535697 instance=ExtResource("2_35vaj")]
+position = Vector2(104, 426)
+
+[node name="Firebug96" parent="." unique_id=1894449855 instance=ExtResource("2_35vaj")]
+position = Vector2(116, 458)
+
+[node name="Firebug97" parent="." unique_id=653721216 instance=ExtResource("2_35vaj")]
+position = Vector2(116, 458)
+
+[node name="Firebug98" parent="." unique_id=2106596865 instance=ExtResource("2_35vaj")]
+position = Vector2(126, 518)
+
+[node name="Firebug99" parent="." unique_id=742022325 instance=ExtResource("2_35vaj")]
+position = Vector2(131, 557)
+
+[node name="TowerMarker" type="Sprite2D" parent="." unique_id=759335916]
+position = Vector2(750, 325)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_vqdh1")
