@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cyk7fua10aldb" path="res://test_scenes/test_orbit.gd" id="1_fsnio"]
 [ext_resource type="PackedScene" uid="uid://brukt14jhkvpx" path="res://entities/enemies/units/firebug.tscn" id="2_35vaj"]
 [ext_resource type="Texture2D" uid="uid://bsbfl80srvtr6" path="res://icon.svg" id="3_vqdh1"]
+[ext_resource type="PackedScene" uid="uid://c4dixhf7u72hy" path="res://entities/towers/tower.tscn" id="4_hj1ny"]
 
 [node name="TestOrbit" type="Node2D" unique_id=719864351]
 script = ExtResource("1_fsnio")
@@ -308,3 +309,6 @@ position = Vector2(131, 557)
 position = Vector2(750, 325)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_vqdh1")
+
+[node name="Tower" parent="." unique_id=653287468 instance=ExtResource("4_hj1ny")]
+position = Vector2(719, 106)
