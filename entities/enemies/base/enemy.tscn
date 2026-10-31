@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://c27lu6bjutm2x" path="res://fsm/state_machine.gd" id="2_prjjb"]
 [ext_resource type="Script" uid="uid://dwhncfr5uhr74" path="res://entities/enemies/base/states/enemy_move.gd" id="3_prjjb"]
 [ext_resource type="Script" uid="uid://8ism7tyx8835" path="res://entities/enemies/base/states/enemy_orbit.gd" id="4_g5cbx"]
+[ext_resource type="Script" uid="uid://cxvaqiqsbqqtv" path="res://entities/enemies/base/states/enemy_attracted.gd" id="5_wvv05"]
+[ext_resource type="Script" uid="uid://cbti6ubpduujf" path="res://entities/enemies/base/states/enemy_launched.gd" id="6_ngu24"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bp71r"]
 animations = [{
@@ -32,6 +34,12 @@ script = ExtResource("2_prjjb")
 initial_state = NodePath("Move")
 metadata/_custom_type_script = "uid://c27lu6bjutm2x"
 
+[node name="Attracted" type="Node" parent="StateMachine" unique_id=1358722893]
+script = ExtResource("5_wvv05")
+
+[node name="Launched" type="Node" parent="StateMachine" unique_id=1612413930]
+script = ExtResource("6_ngu24")
+
 [node name="Move" type="Node" parent="StateMachine" unique_id=1788930881]
 script = ExtResource("3_prjjb")
 
@@ -45,3 +53,7 @@ offset_right = 20.0
 offset_bottom = -17.0
 text = "State"
 horizontal_alignment = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1077985304]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

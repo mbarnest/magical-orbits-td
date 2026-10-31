@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://vt4tef5761rg"]
+
+[ext_resource type="PackedScene" uid="uid://brukt14jhkvpx" path="res://entities/enemies/units/firebug.tscn" id="2_35vaj"]
+[ext_resource type="PackedScene" uid="uid://c4dixhf7u72hy" path="res://entities/towers/tower.tscn" id="4_hj1ny"]
+
+[node name="TestOrbit" type="Node2D" unique_id=719864351]
+
+[node name="Tower" parent="." unique_id=653287468 instance=ExtResource("4_hj1ny")]
+position = Vector2(823, 563)
+mass = 5000.0
+orbit_radius = 150.0
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1199869029]
+
+[node name="Firebug" parent="Enemies" unique_id=1204108137 instance=ExtResource("2_35vaj")]
+position = Vector2(26, 420)
+speed = 200.0
+
+[node name="Firebug2" parent="Enemies" unique_id=820734269 instance=ExtResource("2_35vaj")]
+position = Vector2(112, 491)
+speed = 200.0
+
+[node name="Firebug3" parent="Enemies" unique_id=246143876 instance=ExtResource("2_35vaj")]
+position = Vector2(-71, 539)
+speed = 200.0
+
+[node name="Firebug4" parent="Enemies" unique_id=52158231 instance=ExtResource("2_35vaj")]
+position = Vector2(-167, 879)
+speed = 200.0
+
+[node name="Firebug5" parent="Enemies" unique_id=1694153378 instance=ExtResource("2_35vaj")]
+position = Vector2(-516, 785)
+speed = 200.0
+
+[node name="Firebug6" parent="Enemies" unique_id=365350801 instance=ExtResource("2_35vaj")]
+position = Vector2(-442, 598)
+speed = 200.0
+
+[node name="Firebug7" parent="Enemies" unique_id=1160453426 instance=ExtResource("2_35vaj")]
+position = Vector2(-25, 771)
+speed = 200.0
+
+[node name="Firebug8" parent="Enemies" unique_id=1866328950 instance=ExtResource("2_35vaj")]
+position = Vector2(-296, 752)
+speed = 200.0
+
+[node name="Firebug9" parent="Enemies" unique_id=733357228 instance=ExtResource("2_35vaj")]
+position = Vector2(266, 480)
+speed = 200.0
+mass = 1000.0

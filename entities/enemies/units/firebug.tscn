@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brukt14jhkvpx"]
 
-[ext_resource type="PackedScene" uid="uid://cwvbkh7jhqyh" path="res://entities/enemies/base/enemy_base.tscn" id="1_px7rq"]
+[ext_resource type="PackedScene" uid="uid://cwvbkh7jhqyh" path="res://entities/enemies/base/enemy.tscn" id="1_px7rq"]
 [ext_resource type="Texture2D" uid="uid://c6n4ed6pm4d1f" path="res://assets/enemies/Firebug.png" id="2_ap5jf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0vjl5"]

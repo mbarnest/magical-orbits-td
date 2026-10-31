@@ -475,11 +475,13 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j8abd"]
-radius = 103.00485
+[sub_resource type="CircleShape2D" id="CircleShape2D_lka76"]
+radius = 250.0
 
 [node name="Tower" type="Node2D" unique_id=653287468]
 script = ExtResource("1_3qjjp")
+mass = 1000.0
+orbit_radius = 200.0
 metadata/_edit_group_ = true
 
 [node name="BaseSprite" type="Sprite2D" parent="." unique_id=981413591]
@@ -488,19 +490,17 @@ hframes = 3
 
 [node name="GemSprite" type="AnimatedSprite2D" parent="." unique_id=513582247]
 sprite_frames = SubResource("SpriteFrames_j8abd")
-animation = &"idle_lvl1"
+animation = &"idle_lvl3"
 autoplay = "idle_lvl1"
-frame = 6
-frame_progress = 0.9654328
+frame_progress = 0.14942291
 
 [node name="Range" type="Area2D" parent="." unique_id=1668035683]
+position = Vector2(0, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=764221057]
-position = Vector2(0, 48)
-shape = SubResource("CircleShape2D_j8abd")
+shape = SubResource("CircleShape2D_lka76")
 
-[node name="OrbitCenter" type="Marker2D" parent="." unique_id=322717061]
-position = Vector2(0, 48)
+[node name="OrbitCenter" type="Marker2D" parent="Range" unique_id=322717061]
 
 [node name="TransferLine" type="Line2D" parent="." unique_id=1231439643]
 
@@ -518,3 +518,6 @@ offset_right = 20.0
 offset_bottom = 123.0
 text = "State"
 horizontal_alignment = 1
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
