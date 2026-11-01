@@ -4,6 +4,8 @@ class_name Tower extends Node2D
 @export var mass: float
 @export var orbit_radius: float
 
+var orbiting_enemies: Array[Enemy] = []
+
 @onready var state_machine: StateMachine = $StateMachine
 @onready var state_label: Label = $StateLabel
 @onready var orbit_center = $Range/OrbitCenter
@@ -11,14 +13,16 @@ class_name Tower extends Node2D
 func _process(_delta):
 	state_label.text = state_machine.current_state.name
 
-func _on_range_body_entered(body):
-	var msg = {
-		"tower" = self,
-		"tower_mass" = mass,
-		"orbit_center" = orbit_center.global_position,
-		"orbit_radius" = orbit_radius
-	}
-	body.state_machine.transition_to("Attracted", msg)
+func register_orbiting_enemy(enemy: Enemy) -> void:
+	orbiting_enemies.append(enemy)
 
-func _on_range_body_exited(body):
-	body.state_machine.transition_to("Move")
+func unregister_orbiting_enemy(enemy: Enemy) -> void:
+	orbiting_enemies.erase(enemy)
+
+func _on_range_body_entered(body: Enemy):
+	if body.state_machine.current_state.name == "Move":
+		body.state_machine.transition_to("Attracted", {"tower": self})
+
+func _on_range_body_exited(body: Enemy):
+	if body.state_machine.current_state.name == "Attracted":
+		body.state_machine.transition_to("Move")

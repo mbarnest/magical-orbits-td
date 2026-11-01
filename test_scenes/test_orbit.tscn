@@ -6,44 +6,75 @@
 [node name="TestOrbit" type="Node2D" unique_id=719864351]
 
 [node name="Tower" parent="." unique_id=653287468 instance=ExtResource("4_hj1ny")]
-position = Vector2(823, 563)
+position = Vector2(1342, 680)
 mass = 10000.0
+orbit_radius = 100.0
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1199869029]
 
-[node name="Firebug" parent="Enemies" unique_id=1204108137 instance=ExtResource("2_35vaj")]
-position = Vector2(26, 420)
-speed = 200.0
+[node name="Firebug" parent="Enemies" unique_id=1505888108 instance=ExtResource("2_35vaj")]
+position = Vector2(-1878, 337)
 
 [node name="Firebug2" parent="Enemies" unique_id=820734269 instance=ExtResource("2_35vaj")]
-position = Vector2(112, 491)
-speed = 200.0
+position = Vector2(-952, 299)
 
 [node name="Firebug3" parent="Enemies" unique_id=246143876 instance=ExtResource("2_35vaj")]
-position = Vector2(-71, 539)
+position = Vector2(454, 748)
 speed = 200.0
 
 [node name="Firebug4" parent="Enemies" unique_id=52158231 instance=ExtResource("2_35vaj")]
-position = Vector2(-167, 879)
+position = Vector2(695, 771)
 speed = 200.0
 
 [node name="Firebug5" parent="Enemies" unique_id=1694153378 instance=ExtResource("2_35vaj")]
-position = Vector2(-516, 785)
+position = Vector2(149, 763)
 speed = 200.0
 
 [node name="Firebug6" parent="Enemies" unique_id=365350801 instance=ExtResource("2_35vaj")]
-position = Vector2(-442, 598)
+position = Vector2(368, 255)
 speed = 200.0
 
 [node name="Firebug7" parent="Enemies" unique_id=1160453426 instance=ExtResource("2_35vaj")]
-position = Vector2(-25, 771)
+position = Vector2(965, 738)
+speed = 200.0
+
+[node name="Firebug10" parent="Enemies" unique_id=1204108137 instance=ExtResource("2_35vaj")]
+position = Vector2(-559, 762)
+speed = 200.0
+
+[node name="Firebug11" parent="Enemies" unique_id=1256325717 instance=ExtResource("2_35vaj")]
+position = Vector2(-318, 785)
+speed = 200.0
+
+[node name="Firebug12" parent="Enemies" unique_id=1138697277 instance=ExtResource("2_35vaj")]
+position = Vector2(-864, 777)
+speed = 200.0
+
+[node name="Firebug13" parent="Enemies" unique_id=1080726306 instance=ExtResource("2_35vaj")]
+position = Vector2(-48, 752)
+speed = 200.0
+
+[node name="Firebug14" parent="Enemies" unique_id=1572547406 instance=ExtResource("2_35vaj")]
+position = Vector2(-1489, 782)
+speed = 200.0
+
+[node name="Firebug15" parent="Enemies" unique_id=904611690 instance=ExtResource("2_35vaj")]
+position = Vector2(-1248, 805)
+speed = 200.0
+
+[node name="Firebug16" parent="Enemies" unique_id=1531085945 instance=ExtResource("2_35vaj")]
+position = Vector2(-1794, 797)
+speed = 200.0
+
+[node name="Firebug17" parent="Enemies" unique_id=619718483 instance=ExtResource("2_35vaj")]
+position = Vector2(-978, 772)
 speed = 200.0
 
 [node name="Firebug8" parent="Enemies" unique_id=1866328950 instance=ExtResource("2_35vaj")]
-position = Vector2(-296, 752)
+position = Vector2(-2750, 310)
 speed = 200.0
 
 [node name="Firebug9" parent="Enemies" unique_id=733357228 instance=ExtResource("2_35vaj")]
-position = Vector2(266, 480)
+position = Vector2(1636, 224)
 speed = 200.0
 mass = 1000.0

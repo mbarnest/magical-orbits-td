@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d4lcmy3hrtxtx" path="res://assets/towers/Tower 02 - Level 02 - Weapon.png" id="3_igp14"]
 [ext_resource type="Texture2D" uid="uid://lwwm22rakc60" path="res://assets/towers/Tower 02 - Level 03 - Weapon.png" id="4_3qjjp"]
 [ext_resource type="Script" uid="uid://c27lu6bjutm2x" path="res://fsm/state_machine.gd" id="6_irjtw"]
-[ext_resource type="Script" uid="uid://bhvcn1vne4wer" path="res://entities/towers/states/tower_idle.gd" id="7_irjtw"]
+[ext_resource type="Script" uid="uid://bhvcn1vne4wer" path="res://entities/towers/states/tower_attacking.gd" id="7_irjtw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irjtw"]
 atlas = ExtResource("2_4p4bm")
@@ -490,9 +490,8 @@ hframes = 3
 
 [node name="GemSprite" type="AnimatedSprite2D" parent="." unique_id=513582247]
 sprite_frames = SubResource("SpriteFrames_j8abd")
-animation = &"idle_lvl3"
+animation = &"idle_lvl1"
 autoplay = "idle_lvl1"
-frame_progress = 0.14942291
 
 [node name="Range" type="Area2D" parent="." unique_id=1668035683]
 position = Vector2(0, 48)
@@ -506,10 +505,11 @@ shape = SubResource("CircleShape2D_lka76")
 
 [node name="StateMachine" type="Node" parent="." unique_id=492722158 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_irjtw")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Attacking")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=285885001]
+[node name="Attacking" type="Node" parent="StateMachine" unique_id=285885001]
 script = ExtResource("7_irjtw")
+launch_angle_tolerance = 10.0
 
 [node name="StateLabel" type="Label" parent="." unique_id=1701412413]
 offset_left = -20.0

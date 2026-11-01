@@ -1,6 +1,7 @@
 class_name EnemyMove extends EnemyState
 
 func enter(_msg := {}) -> void:
+	enemy.add_to_group("enemies")
 	enemy.animated_sprite.play("walk")
 
 func physics_update(_delta: float) -> void:
@@ -8,4 +9,4 @@ func physics_update(_delta: float) -> void:
 	enemy.move_and_slide()
 
 func exit():
-	pass
+	enemy.remove_from_group("enemies")

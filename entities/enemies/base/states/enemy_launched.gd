@@ -4,7 +4,7 @@ var launch_velocity: Vector2
 var enemy_mass: float
 
 func enter(msg := {}) -> void:
-	launch_velocity = msg["velocity"]
+	launch_velocity = msg.velocity
 
 func physics_update(_delta: float) -> void:
 	enemy.global_position += launch_velocity * _delta
