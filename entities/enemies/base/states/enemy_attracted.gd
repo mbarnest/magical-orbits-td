@@ -7,6 +7,9 @@ const MIN_DIST: float = 100.0
 func enter(msg := {}) -> void:
 	tower = msg.tower
 
+func exit() -> void:
+	pass
+
 func physics_update(delta: float) -> void:
 	var vector_to_tower: Vector2 = tower.orbit_center.global_position - enemy.global_position
 	var tower_distance: float = vector_to_tower.length()
@@ -25,8 +28,7 @@ func physics_update(delta: float) -> void:
 	var force_dir: Vector2 = direction.lerp(tangent, tangent_weight).normalized()
 	
 	enemy.velocity += force_dir * gravity_acceleration * delta
-	
-	enemy.move_and_slide()
+	enemy.global_position += enemy.velocity * delta
 	
 	# Passed the closest point to the tower the state must change to Orbit
 	var passed_periapsis: bool = enemy.velocity.dot(direction) < 0

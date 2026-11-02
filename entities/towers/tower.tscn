@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://lwwm22rakc60" path="res://assets/towers/Tower 02 - Level 03 - Weapon.png" id="4_3qjjp"]
 [ext_resource type="Script" uid="uid://c27lu6bjutm2x" path="res://fsm/state_machine.gd" id="6_irjtw"]
 [ext_resource type="Script" uid="uid://bhvcn1vne4wer" path="res://entities/towers/states/tower_attacking.gd" id="7_irjtw"]
+[ext_resource type="Script" uid="uid://clue16glmevnv" path="res://entities/towers/states/tower_orbiting.gd" id="8_wfufn"]
+[ext_resource type="Script" uid="uid://coyd6kj08w2dn" path="res://entities/towers/states/tower_transferring.gd" id="9_klv4w"]
+[ext_resource type="Texture2D" uid="uid://bi8qgi5vcf0jb" path="res://assets/towers/ui_attacking.png" id="10_psyns"]
+[ext_resource type="Texture2D" uid="uid://c0lqsmuvgr0kx" path="res://assets/towers/ui_orbiting.png" id="11_edjlk"]
+[ext_resource type="Texture2D" uid="uid://fautgeitany6" path="res://assets/towers/ui_transferring.png" id="12_edjlk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lka76"]
+radius = 250.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irjtw"]
 atlas = ExtResource("2_4p4bm")
@@ -475,14 +483,20 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lka76"]
-radius = 250.0
-
-[node name="Tower" type="Node2D" unique_id=653287468]
+[node name="Tower" type="Node2D" unique_id=653287468 groups=["towers"]]
 script = ExtResource("1_3qjjp")
 mass = 1000.0
 orbit_radius = 200.0
 metadata/_edit_group_ = true
+
+[node name="TowerRange" type="Area2D" parent="." unique_id=1668035683]
+position = Vector2(0, 48)
+collision_mask = 2
+
+[node name="RangeShape" type="CollisionShape2D" parent="TowerRange" unique_id=764221057]
+shape = SubResource("CircleShape2D_lka76")
+
+[node name="OrbitCenter" type="Marker2D" parent="TowerRange" unique_id=322717061]
 
 [node name="BaseSprite" type="Sprite2D" parent="." unique_id=981413591]
 texture = ExtResource("1_fqylt")
@@ -492,14 +506,6 @@ hframes = 3
 sprite_frames = SubResource("SpriteFrames_j8abd")
 animation = &"idle_lvl1"
 autoplay = "idle_lvl1"
-
-[node name="Range" type="Area2D" parent="." unique_id=1668035683]
-position = Vector2(0, 48)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=764221057]
-shape = SubResource("CircleShape2D_lka76")
-
-[node name="OrbitCenter" type="Marker2D" parent="Range" unique_id=322717061]
 
 [node name="TransferLine" type="Line2D" parent="." unique_id=1231439643]
 
@@ -511,13 +517,49 @@ initial_state = NodePath("Attacking")
 script = ExtResource("7_irjtw")
 launch_angle_tolerance = 10.0
 
+[node name="Orbiting" type="Node" parent="StateMachine" unique_id=1304884465]
+script = ExtResource("8_wfufn")
+
+[node name="Transferring" type="Node" parent="StateMachine" unique_id=601956783]
+script = ExtResource("9_klv4w")
+
 [node name="StateLabel" type="Label" parent="." unique_id=1701412413]
-offset_left = -20.0
+offset_left = -75.0
 offset_top = 100.0
-offset_right = 20.0
+offset_right = 75.0
 offset_bottom = 123.0
 text = "State"
 horizontal_alignment = 1
 
-[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
-[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
+[node name="StateMenu" type="Control" parent="." unique_id=2138619447]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -100.0
+offset_top = -110.0
+offset_right = -100.0
+offset_bottom = -110.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StateMenu" unique_id=1328429615]
+layout_mode = 0
+offset_right = 8.0
+
+[node name="BtnAttacking" type="TextureButton" parent="StateMenu/HBoxContainer" unique_id=1395370267]
+layout_mode = 2
+texture_normal = ExtResource("10_psyns")
+
+[node name="BtnOrbiting" type="TextureButton" parent="StateMenu/HBoxContainer" unique_id=1817701052]
+layout_mode = 2
+texture_normal = ExtResource("11_edjlk")
+
+[node name="BtnTransferring" type="TextureButton" parent="StateMenu/HBoxContainer" unique_id=416612776]
+layout_mode = 2
+texture_normal = ExtResource("12_edjlk")
+
+[connection signal="area_entered" from="TowerRange" to="." method="_on_range_area_entered"]
+[connection signal="area_exited" from="TowerRange" to="." method="_on_range_area_exited"]
+[connection signal="input_event" from="TowerRange" to="." method="_on_range_input_event"]
+[connection signal="pressed" from="StateMenu/HBoxContainer/BtnAttacking" to="." method="_on_btn_attacking_pressed"]
+[connection signal="pressed" from="StateMenu/HBoxContainer/BtnOrbiting" to="." method="_on_btn_orbiting_pressed"]
+[connection signal="pressed" from="StateMenu/HBoxContainer/BtnTransferring" to="." method="_on_btn_transferring_pressed"]

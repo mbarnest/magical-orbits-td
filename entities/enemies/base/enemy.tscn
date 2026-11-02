@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://dw17ncy2opjlm" path="res://entities/enemies/base/enemy.gd" id="1_yc03e"]
 [ext_resource type="Script" uid="uid://c27lu6bjutm2x" path="res://fsm/state_machine.gd" id="2_prjjb"]
 [ext_resource type="Script" uid="uid://dwhncfr5uhr74" path="res://entities/enemies/base/states/enemy_move.gd" id="3_prjjb"]
+[ext_resource type="Script" uid="uid://bhm40fbajtmpl" path="res://entities/enemies/base/states/enemy_die.gd" id="4_ej1s8"]
 [ext_resource type="Script" uid="uid://8ism7tyx8835" path="res://entities/enemies/base/states/enemy_orbit.gd" id="4_g5cbx"]
 [ext_resource type="Script" uid="uid://cxvaqiqsbqqtv" path="res://entities/enemies/base/states/enemy_attracted.gd" id="5_wvv05"]
 [ext_resource type="Script" uid="uid://cbti6ubpduujf" path="res://entities/enemies/base/states/enemy_launched.gd" id="6_ngu24"]
+[ext_resource type="Script" uid="uid://xnojceu0e71u" path="res://entities/enemies/base/states/enemy_transferred.gd" id="8_xcfcd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bp71r"]
 animations = [{
@@ -17,7 +19,12 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0x3j"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1204108137]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcfcd"]
+bg_color = Color(0.78431374, 0.19607843, 0.19607843, 1)
+
+[node name="Enemy" type="Area2D" unique_id=1016837423]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_yc03e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=871046538]
@@ -37,6 +44,9 @@ metadata/_custom_type_script = "uid://c27lu6bjutm2x"
 [node name="Attracted" type="Node" parent="StateMachine" unique_id=1358722893]
 script = ExtResource("5_wvv05")
 
+[node name="Die" type="Node" parent="StateMachine" unique_id=1513848029]
+script = ExtResource("4_ej1s8")
+
 [node name="Launched" type="Node" parent="StateMachine" unique_id=1612413930]
 script = ExtResource("6_ngu24")
 
@@ -46,14 +56,21 @@ script = ExtResource("3_prjjb")
 [node name="Orbit" type="Node" parent="StateMachine" unique_id=1821493064]
 script = ExtResource("4_g5cbx")
 
+[node name="Transferred" type="Node" parent="StateMachine" unique_id=1524726924]
+script = ExtResource("8_xcfcd")
+
 [node name="StateLabel" type="Label" parent="." unique_id=1557385115]
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-offset_bottom = -17.0
+offset_left = -75.0
+offset_top = 10.0
+offset_right = 75.0
+offset_bottom = 33.0
 text = "State"
 horizontal_alignment = 1
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1077985304]
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=449927551]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = -20.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_xcfcd")
+show_percentage = false

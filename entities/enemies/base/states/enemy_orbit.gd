@@ -10,6 +10,9 @@ func enter(msg := {}) -> void:
 	tower = msg.tower
 	tower.register_orbiting_enemy(enemy)
 	
+	enemy.health_bar.hide()
+	enemy.animated_sprite.self_modulate = Color.DODGER_BLUE
+	
 	var vector_to_enemy = enemy.global_position - tower.orbit_center.global_position
 	current_angle = vector_to_enemy.angle()
 	current_radius = vector_to_enemy.length()

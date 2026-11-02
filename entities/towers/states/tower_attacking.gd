@@ -4,6 +4,9 @@ class_name TowerAttacking extends TowerState
 var target: Enemy
 
 func enter(_msg := {}) -> void:
+	tower.set_range_color(Color(1.0, 0.2, 0.2, 0.2))
+	
+func exit() -> void:
 	pass
 	
 func physics_update(_delta: float) -> void:
@@ -23,9 +26,6 @@ func physics_update(_delta: float) -> void:
 				enemy.state_machine.transition_to("Launched", {
 					"velocity": linear_velocity
 				})
-			
-func exit() -> void:
-	pass
 
 func get_most_advanced_enemy() -> Enemy:
 	var most_advanced_enemy: Enemy = null

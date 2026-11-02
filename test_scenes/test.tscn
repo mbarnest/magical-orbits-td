@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://vt4tef5761rg"]
+
+[ext_resource type="PackedScene" uid="uid://c4dixhf7u72hy" path="res://entities/towers/tower.tscn" id="1_1xnhx"]
+[ext_resource type="Script" uid="uid://c1usj736iart8" path="res://test_scenes/test_enemy_spawner.gd" id="2_1xnhx"]
+[ext_resource type="PackedScene" uid="uid://brukt14jhkvpx" path="res://entities/enemies/units/firebug.tscn" id="3_1mig7"]
+
+[node name="Test" type="Node2D" unique_id=719864351]
+
+[node name="Tower" parent="." unique_id=653287468 instance=ExtResource("1_1xnhx")]
+position = Vector2(398, 766)
+
+[node name="Tower2" parent="." unique_id=93874447 instance=ExtResource("1_1xnhx")]
+position = Vector2(1639, 215)
+
+[node name="EnemySpawner" type="Marker2D" parent="." unique_id=677144025]
+position = Vector2(86, 753)
+script = ExtResource("2_1xnhx")
+enemy_scene = ExtResource("3_1mig7")
+
+[node name="Timer" type="Timer" parent="EnemySpawner" unique_id=232466951]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
