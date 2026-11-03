@@ -2,8 +2,6 @@ class_name EnemyAttracted extends EnemyState
 
 var tower: Tower
 
-const MIN_DIST: float = 100.0
-
 func enter(msg := {}) -> void:
 	tower = msg.tower
 
@@ -21,10 +19,10 @@ func physics_update(delta: float) -> void:
 		tangent = -tangent
 	
 	# Gravitational acceleration from Newton's law of universal gravitation
-	var gravity_acceleration: float = (GameConstants.G * tower.mass) / pow(tower_distance, 2)
+	var gravity_acceleration: float = (GameManager.G * tower.mass) / pow(tower_distance, 2)
 	
 	# This factor determines the proportion between the gravitational force and the tangential force
-	var tangent_weight: float = clampf(remap(tower_distance, MIN_DIST, MIN_DIST + tower.orbit_radius, 1.0, 0.0), 0.0, 1.0)
+	var tangent_weight: float = clampf(remap(tower_distance, GameManager.TOWER_MIN_DISTANCE, GameManager.TOWER_MIN_DISTANCE + tower.orbit_radius, 1.0, 0.0), 0.0, 1.0)
 	var force_dir: Vector2 = direction.lerp(tangent, tangent_weight).normalized()
 	
 	enemy.velocity += force_dir * gravity_acceleration * delta

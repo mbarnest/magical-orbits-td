@@ -20,7 +20,7 @@ func enter(msg := {}) -> void:
 	# Relative position and velocity determines the spin direction
 	var spin_direction = -1.0 if vector_to_enemy.cross(enemy.velocity) < 0 else 1.0
 	
-	target_angular_velocity = sqrt((GameConstants.G * tower.mass) / pow(tower.orbit_radius, 3)) * spin_direction
+	target_angular_velocity = sqrt((GameManager.G * tower.mass) / pow(tower.orbit_radius, 3)) * spin_direction
 	angular_velocity = (enemy.velocity.length() / max(current_radius, 1.0)) * spin_direction
 
 func exit():

@@ -13,6 +13,23 @@ var range_color: Color = Color.TRANSPARENT
 @onready var tower_range = $TowerRange
 @onready var range_shape = $TowerRange/RangeShape
 @onready var orbit_center: Marker2D = $TowerRange/OrbitCenter
+@onready var btn_target = $btnTarget
+
+func _ready() -> void:
+	SignalManager.transfer_mode_changed.connect(_on_transfer_mode_changed)
+	
+func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
+	if is_active and origin != self:
+		btn_target.show()
+	else:
+		btn_target.hide()
+
+func _on_tower_clicked(clicked_tower: Tower) -> void:
+	if clicked_tower != self:
+		state_menu.hide()
+
+func _on_deselect_requested() -> void:
+	state_menu.hide()
 
 func register_orbiting_enemy(enemy: Enemy) -> void:
 	orbiting_enemies.append(enemy)
@@ -28,15 +45,6 @@ func _on_range_area_exited(area):
 	if area.state_machine.current_state.name == "Attracted":
 		area.state_machine.transition_to("Move")
 
-func _on_range_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		for t in get_tree().get_nodes_in_group("towers"):
-			var st = t.state_machine.current_state
-			if st is TowerTransferring and not st.target:
-				st.set_target(self)
-				return
-		toggle_menu()
-
 func toggle_menu() -> void:
 	state_menu.visible = !state_menu.visible
 	state_label.text = state_machine.current_state.name
@@ -50,13 +58,8 @@ func _on_btn_orbiting_pressed():
 	toggle_menu()
 
 func _on_btn_transferring_pressed():
-	state_machine.transition_to("Transferring", {"previous_state": state_machine.current_state.name})
+	state_machine.transition_to("Transferring", {"previous_state": str(state_machine.current_state.name)})
 	toggle_menu()
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if state_menu.visible:
-			state_menu.hide()
 
 func set_range_color(color: Color) -> void:
 	range_color = color
@@ -64,3 +67,10 @@ func set_range_color(color: Color) -> void:
 
 func _draw() -> void:
 	draw_circle(tower_range.position, range_shape.shape.radius, range_color)
+
+func _on_btn_target_pressed():
+	SignalManager.target_selected.emit(self)
+	btn_target.hide()
+
+func _on_btn_tower_pressed():
+	toggle_menu()

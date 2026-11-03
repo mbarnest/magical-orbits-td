@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bhvcn1vne4wer" path="res://entities/towers/states/tower_attacking.gd" id="7_irjtw"]
 [ext_resource type="Script" uid="uid://clue16glmevnv" path="res://entities/towers/states/tower_orbiting.gd" id="8_wfufn"]
 [ext_resource type="Script" uid="uid://coyd6kj08w2dn" path="res://entities/towers/states/tower_transferring.gd" id="9_klv4w"]
+[ext_resource type="Texture2D" uid="uid://dcffne5sf848u" path="res://assets/towers/ui_target.png" id="10_it6y3"]
 [ext_resource type="Texture2D" uid="uid://bi8qgi5vcf0jb" path="res://assets/towers/ui_attacking.png" id="10_psyns"]
 [ext_resource type="Texture2D" uid="uid://c0lqsmuvgr0kx" path="res://assets/towers/ui_orbiting.png" id="11_edjlk"]
 [ext_resource type="Texture2D" uid="uid://fautgeitany6" path="res://assets/towers/ui_transferring.png" id="12_edjlk"]
@@ -531,6 +532,12 @@ offset_bottom = 123.0
 text = "State"
 horizontal_alignment = 1
 
+[node name="btnTower" type="Button" parent="." unique_id=376559808]
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 96.0
+flat = true
+
 [node name="StateMenu" type="Control" parent="." unique_id=2138619447]
 visible = false
 z_index = 1
@@ -557,9 +564,20 @@ texture_normal = ExtResource("11_edjlk")
 layout_mode = 2
 texture_normal = ExtResource("12_edjlk")
 
+[node name="btnTarget" type="TextureButton" parent="." unique_id=714129651]
+visible = false
+z_index = 2
+offset_left = -128.0
+offset_top = -100.0
+offset_right = 128.0
+offset_bottom = 156.0
+texture_normal = ExtResource("10_it6y3")
+
 [connection signal="area_entered" from="TowerRange" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="TowerRange" to="." method="_on_range_area_exited"]
 [connection signal="input_event" from="TowerRange" to="." method="_on_range_input_event"]
+[connection signal="pressed" from="btnTower" to="." method="_on_btn_tower_pressed"]
 [connection signal="pressed" from="StateMenu/HBoxContainer/BtnAttacking" to="." method="_on_btn_attacking_pressed"]
 [connection signal="pressed" from="StateMenu/HBoxContainer/BtnOrbiting" to="." method="_on_btn_orbiting_pressed"]
 [connection signal="pressed" from="StateMenu/HBoxContainer/BtnTransferring" to="." method="_on_btn_transferring_pressed"]
+[connection signal="pressed" from="btnTarget" to="." method="_on_btn_target_pressed"]

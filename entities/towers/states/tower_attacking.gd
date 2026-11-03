@@ -1,6 +1,6 @@
 class_name TowerAttacking extends TowerState
 
-@export_range(5.0, 30.0) var launch_angle_tolerance: float = 15.0
+@export_range(5.0, 30.0) var launch_angle_tolerance: float = 5.0
 var target: Enemy
 
 func enter(_msg := {}) -> void:
@@ -23,9 +23,7 @@ func physics_update(_delta: float) -> void:
 			var diff_angle: float = abs(tangent_dir.angle_to(dir_to_target))
 			
 			if diff_angle <= deg_to_rad(launch_angle_tolerance):
-				enemy.state_machine.transition_to("Launched", {
-					"velocity": linear_velocity
-				})
+				enemy.state_machine.transition_to("Launched", {"velocity": linear_velocity})
 
 func get_most_advanced_enemy() -> Enemy:
 	var most_advanced_enemy: Enemy = null
