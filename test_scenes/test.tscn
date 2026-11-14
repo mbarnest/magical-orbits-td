@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://vt4tef5761rg"]
 
 [ext_resource type="PackedScene" uid="uid://c4dixhf7u72hy" path="res://entities/towers/tower.tscn" id="1_1xnhx"]
+[ext_resource type="Script" uid="uid://beejrlklxm5dc" path="res://test_scenes/test.gd" id="1_ydlx5"]
 [ext_resource type="Script" uid="uid://c1usj736iart8" path="res://test_scenes/test_enemy_spawner.gd" id="2_1xnhx"]
 [ext_resource type="PackedScene" uid="uid://brukt14jhkvpx" path="res://entities/enemies/units/firebug.tscn" id="3_1mig7"]
 
 [node name="Test" type="Node2D" unique_id=719864351]
+script = ExtResource("1_ydlx5")
 
 [node name="Tower" parent="." unique_id=653287468 instance=ExtResource("1_1xnhx")]
 position = Vector2(398, 766)
@@ -18,7 +20,13 @@ script = ExtResource("2_1xnhx")
 enemy_scene = ExtResource("3_1mig7")
 
 [node name="Timer" type="Timer" parent="EnemySpawner" unique_id=232466951]
-wait_time = 0.1
 autostart = true
 
+[node name="btnExit" type="Button" parent="." unique_id=1139053178]
+offset_right = 179.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 48
+text = "Exit"
+
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

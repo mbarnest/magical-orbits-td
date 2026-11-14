@@ -6,6 +6,7 @@ class_name Enemy extends Area2D
 @export var health: float = 500000.0
 
 var velocity: Vector2 = Vector2.ZERO
+var flow_field: FlowField
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
@@ -15,7 +16,8 @@ var velocity: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	health_bar.max_value = health
 	health_bar.value = health
-
+	flow_field = get_tree().get_first_node_in_group("flow_field") as FlowField
+	
 func _physics_process(_delta: float) -> void:
 	state_label.text = state_machine.current_state.name
 	

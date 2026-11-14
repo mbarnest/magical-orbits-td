@@ -28,6 +28,8 @@ func physics_update(delta: float) -> void:
 	var force_dir: Vector2 = direction.lerp(tangent, tangent_weight).normalized()
 
 	enemy.velocity += force_dir * gravity_acceleration * delta
+	enemy.velocity = enemy.velocity.limit_length(GameManager.MAX_TRANSFER_SPEED)
+	
 	enemy.global_position += enemy.velocity * delta
 
 	var passed_periapsis: bool = enemy.velocity.dot(direction) < 0

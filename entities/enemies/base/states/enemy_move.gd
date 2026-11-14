@@ -7,7 +7,8 @@ func enter(_msg := {}) -> void:
 	enemy.set_collision_layer_value(5, true)
 
 func physics_update(delta: float) -> void:
-	enemy.velocity = Vector2.RIGHT * enemy.speed
+	var direction: Vector2 = enemy.flow_field.get_direction(enemy.global_position) if enemy.flow_field else Vector2.RIGHT
+	enemy.velocity = direction * enemy.speed
 	enemy.global_position += enemy.velocity * delta
 
 func exit():

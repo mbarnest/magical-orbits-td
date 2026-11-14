@@ -43,5 +43,8 @@ func _on_transfer_cancelled() -> void:
 	tower.state_machine.transition_to(previous_state)
 
 func disconnect_signals() -> void:
-	SignalManager.transfer_cancelled.disconnect(_on_transfer_cancelled)
-	SignalManager.target_selected.disconnect(_on_target_selected)
+	if SignalManager.target_selected.is_connected(_on_target_selected):
+		SignalManager.target_selected.disconnect(_on_target_selected)
+		
+	if SignalManager.transfer_cancelled.is_connected(_on_transfer_cancelled):
+		SignalManager.transfer_cancelled.disconnect(_on_transfer_cancelled)

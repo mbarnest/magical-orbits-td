@@ -37,6 +37,9 @@ func register_orbiting_enemy(enemy: Enemy) -> void:
 func unregister_orbiting_enemy(enemy: Enemy) -> void:
 	orbiting_enemies.erase(enemy)
 
+func get_range_radius() -> float:
+	return range_shape.shape.radius
+
 func _on_range_area_entered(area):
 	if area.state_machine.current_state.name == "Move":
 		area.state_machine.transition_to("Attracted", {"tower": self})
