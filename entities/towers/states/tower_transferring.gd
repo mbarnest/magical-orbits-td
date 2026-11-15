@@ -6,7 +6,9 @@ var target_tower: Tower
 var previous_state: String
 
 func enter(msg := {}) -> void:
-	tower.set_range_color(Color(0.2, 1.0, 0.4, 0.2))
+	tower.state_label.text = "Transferring"
+
+	tower.set_range_color(Color(0.1, 1.0, 0.2, 0.22))
 	previous_state = msg.previous_state
 	target_tower = null
 	

@@ -14,3 +14,9 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Builds ignores
+build_windows/
+*.exe
+*.pck
+*.zip

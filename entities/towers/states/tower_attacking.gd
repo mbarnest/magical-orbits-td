@@ -4,7 +4,8 @@ class_name TowerAttacking extends TowerState
 var target: Enemy
 
 func enter(_msg := {}) -> void:
-	tower.set_range_color(Color(1.0, 0.2, 0.2, 0.2))
+	tower.state_label.text = "Attacking"
+	tower.set_range_color(Color(1.0, 0.0, 0.149, 0.353))
 	
 func exit() -> void:
 	pass

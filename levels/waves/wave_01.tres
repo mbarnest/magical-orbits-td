@@ -13,8 +13,8 @@ metadata/_custom_type_script = "uid://2phumfj2be2c"
 [sub_resource type="Resource" id="Resource_ukwr8"]
 script = ExtResource("1_veqiu")
 enemy_scene = ExtResource("2_lqlpm")
-count = 10
-interval = 0.5
+count = 5000
+interval = 0.1
 metadata/_custom_type_script = "uid://2phumfj2be2c"
 
 [resource]

@@ -1,7 +1,9 @@
 class_name TowerOrbiting extends TowerState
 
 func enter(_msg := {}) -> void:
-	tower.set_range_color(Color(0.2, 0.6, 1.0, 0.2))
+	tower.state_label.text = "Orbiting"
+	tower.set_range_color(Color(0.18, 0.0, 1.0, 0.38))
+
 	
 func exit() -> void:
 	pass

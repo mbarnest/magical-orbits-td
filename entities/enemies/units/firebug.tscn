@@ -200,6 +200,7 @@ animations = [{
 height = 46.0
 
 [node name="Firebug" unique_id=1204108137 instance=ExtResource("1_px7rq")]
+health = 500.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]

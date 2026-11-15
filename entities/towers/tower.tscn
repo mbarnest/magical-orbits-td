@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b0j0bhp77yk7g" path="res://entities/towers/tower.gd" id="1_3qjjp"]
 [ext_resource type="Texture2D" uid="uid://dhynugofo4i7l" path="res://assets/towers/Tower 02.png" id="1_fqylt"]
 [ext_resource type="Texture2D" uid="uid://br2btlxg75jhe" path="res://assets/towers/Tower 02 - Level 01 - Weapon.png" id="2_4p4bm"]
+[ext_resource type="Texture2D" uid="uid://c7v0d2wlcw07f" path="res://entities/towers/tower_range_circle.tres" id="2_qsg1a"]
 [ext_resource type="Texture2D" uid="uid://d4lcmy3hrtxtx" path="res://assets/towers/Tower 02 - Level 02 - Weapon.png" id="3_igp14"]
 [ext_resource type="Texture2D" uid="uid://lwwm22rakc60" path="res://assets/towers/Tower 02 - Level 03 - Weapon.png" id="4_3qjjp"]
 [ext_resource type="Script" uid="uid://c27lu6bjutm2x" path="res://fsm/state_machine.gd" id="6_irjtw"]
@@ -13,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://bi8qgi5vcf0jb" path="res://assets/towers/ui_attacking.png" id="10_psyns"]
 [ext_resource type="Texture2D" uid="uid://c0lqsmuvgr0kx" path="res://assets/towers/ui_orbiting.png" id="11_edjlk"]
 [ext_resource type="Texture2D" uid="uid://fautgeitany6" path="res://assets/towers/ui_transferring.png" id="12_edjlk"]
+[ext_resource type="Texture2D" uid="uid://c7rq58px8ixfo" path="res://assets/towers/ui_upgrade.png" id="14_m53j6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lka76"]
+resource_local_to_scene = true
 radius = 192.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irjtw"]
@@ -486,13 +489,16 @@ animations = [{
 
 [node name="Tower" type="Node2D" unique_id=653287468 groups=["towers"]]
 script = ExtResource("1_3qjjp")
-mass = 1000.0
-orbit_radius = 200.0
 metadata/_edit_group_ = true
 
 [node name="TowerRange" type="Area2D" parent="." unique_id=1668035683]
+z_index = -1
 position = Vector2(0, 48)
 collision_mask = 2
+
+[node name="RangeColor" type="Sprite2D" parent="TowerRange" unique_id=763905452]
+texture_filter = 2
+texture = ExtResource("2_qsg1a")
 
 [node name="RangeShape" type="CollisionShape2D" parent="TowerRange" unique_id=764221057]
 shape = SubResource("CircleShape2D_lka76")
@@ -564,6 +570,14 @@ texture_normal = ExtResource("11_edjlk")
 layout_mode = 2
 texture_normal = ExtResource("12_edjlk")
 
+[node name="BtnUpgrade" type="TextureButton" parent="StateMenu" unique_id=1204623493]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 142.0
+offset_right = 200.0
+offset_bottom = 206.0
+texture_normal = ExtResource("14_m53j6")
+
 [node name="btnTarget" type="TextureButton" parent="." unique_id=714129651]
 visible = false
 z_index = 2
@@ -575,9 +589,9 @@ texture_normal = ExtResource("10_it6y3")
 
 [connection signal="area_entered" from="TowerRange" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="TowerRange" to="." method="_on_range_area_exited"]
-[connection signal="input_event" from="TowerRange" to="." method="_on_range_input_event"]
 [connection signal="pressed" from="btnTower" to="." method="_on_btn_tower_pressed"]
 [connection signal="pressed" from="StateMenu/HBoxContainer/BtnAttacking" to="." method="_on_btn_attacking_pressed"]
 [connection signal="pressed" from="StateMenu/HBoxContainer/BtnOrbiting" to="." method="_on_btn_orbiting_pressed"]
 [connection signal="pressed" from="StateMenu/HBoxContainer/BtnTransferring" to="." method="_on_btn_transferring_pressed"]
+[connection signal="pressed" from="StateMenu/BtnUpgrade" to="." method="_on_btn_upgrade_pressed"]
 [connection signal="pressed" from="btnTarget" to="." method="_on_btn_target_pressed"]

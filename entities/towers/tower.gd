@@ -1,35 +1,59 @@
 class_name Tower extends Node2D
 
-@export_range(1,3) var level: int = 1
-@export var mass: float
-@export var orbit_radius: float
+const LEVELS := {
+	1: { "radius": 150.0, "mass": 1000.0, "max_attract_mass": 1000.0 },
+	2: { "radius": 200.0, "mass": 2000.0, "max_attract_mass": 2000.0 },
+	3: { "radius": 250.0, "mass": 3000.0, "max_attract_mass": 3000.0 },
+}
+const ORBIT_MARGIN: int = 32
 
+@export var orbit_radius: float = 128.0
+
+var level: int = 1
+var mass: float = 0.0
+var max_attract_mass: float = 0.0
 var orbiting_enemies: Array[Enemy] = []
-var range_color: Color = Color.TRANSPARENT
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var state_label: Label = $StateLabel
 @onready var state_menu: Control = $StateMenu
-@onready var tower_range = $TowerRange
-@onready var range_shape = $TowerRange/RangeShape
+@onready var range_shape: CollisionShape2D = $TowerRange/RangeShape
+@onready var range_color: Sprite2D = $TowerRange/RangeColor
 @onready var orbit_center: Marker2D = $TowerRange/OrbitCenter
-@onready var btn_target = $btnTarget
+@onready var base_sprite: Sprite2D = $BaseSprite
+@onready var gem_sprite: AnimatedSprite2D = $GemSprite
+@onready var btn_target: TextureButton = $btnTarget
+@onready var btn_upgrade: TextureButton = $StateMenu/BtnUpgrade
 
 func _ready() -> void:
+	state_label.visible = GameManager.show_debug
 	SignalManager.transfer_mode_changed.connect(_on_transfer_mode_changed)
-	
-func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
-	if is_active and origin != self:
-		btn_target.show()
-	else:
-		btn_target.hide()
+	apply_level_stats()
 
-func _on_tower_clicked(clicked_tower: Tower) -> void:
-	if clicked_tower != self:
-		state_menu.hide()
+func upgrade() -> void:
+	level += 1
+	apply_level_stats()
+	SignalManager.towers_changed.emit()
 
-func _on_deselect_requested() -> void:
-	state_menu.hide()
+func apply_level_stats() -> void:
+	var stats: Dictionary = LEVELS[level]
+	mass = stats.mass
+	max_attract_mass = stats.max_attract_mass
+	orbit_radius = stats.radius - ORBIT_MARGIN
+	range_shape.shape.radius = stats.radius
+
+	var tex_radius: float = range_color.texture.get_width() * 0.5
+	range_color.scale = Vector2.ONE * (stats.radius / tex_radius)
+
+	base_sprite.frame = level - 1
+	gem_sprite.play("idle_lvl%d" % level)
+	btn_upgrade.visible = level < LEVELS.size()
+
+func get_range_radius() -> float:
+	return range_shape.shape.radius
+
+func set_range_color(color: Color) -> void:
+	range_color.modulate = color
 
 func register_orbiting_enemy(enemy: Enemy) -> void:
 	orbiting_enemies.append(enemy)
@@ -37,43 +61,43 @@ func register_orbiting_enemy(enemy: Enemy) -> void:
 func unregister_orbiting_enemy(enemy: Enemy) -> void:
 	orbiting_enemies.erase(enemy)
 
-func get_range_radius() -> float:
-	return range_shape.shape.radius
+func toggle_menu() -> void:
+	state_menu.visible = !state_menu.visible
+	if state_menu.visible:
+		move_to_front()
 
-func _on_range_area_entered(area):
+func select_state(state_name: String, msg := {}) -> void:
+	state_machine.transition_to(state_name, msg)
+	toggle_menu()
+
+func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
+	btn_target.visible = is_active and origin != self
+
+func _on_range_area_entered(area: Area2D) -> void:
 	if area.state_machine.current_state.name == "Move":
 		area.state_machine.transition_to("Attracted", {"tower": self})
 
-func _on_range_area_exited(area):
+func _on_range_area_exited(area: Area2D) -> void:
 	if area.state_machine.current_state.name == "Attracted":
 		area.state_machine.transition_to("Move")
 
-func toggle_menu() -> void:
-	state_menu.visible = !state_menu.visible
-	state_label.text = state_machine.current_state.name
-
-func _on_btn_attacking_pressed():
-	state_machine.transition_to("Attacking")
+func _on_btn_tower_pressed() -> void:
 	toggle_menu()
 
-func _on_btn_orbiting_pressed():
-	state_machine.transition_to("Orbiting")
-	toggle_menu()
+func _on_btn_attacking_pressed() -> void:
+	select_state("Attacking")
 
-func _on_btn_transferring_pressed():
-	state_machine.transition_to("Transferring", {"previous_state": str(state_machine.current_state.name)})
-	toggle_menu()
+func _on_btn_orbiting_pressed() -> void:
+	select_state("Orbiting")
 
-func set_range_color(color: Color) -> void:
-	range_color = color
-	queue_redraw()
+func _on_btn_transferring_pressed() -> void:
+	select_state("Transferring", {"previous_state": state_machine.current_state.name})
 
-func _draw() -> void:
-	draw_circle(tower_range.position, range_shape.shape.radius, range_color)
-
-func _on_btn_target_pressed():
+func _on_btn_target_pressed() -> void:
 	SignalManager.target_selected.emit(self)
 	btn_target.hide()
 
-func _on_btn_tower_pressed():
+
+func _on_btn_upgrade_pressed():
+	upgrade()
 	toggle_menu()

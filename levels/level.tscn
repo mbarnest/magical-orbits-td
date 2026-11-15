@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://768auqbojxvn" path="res://levels/waves/wave_data.gd" id="6_d5x7l"]
 [ext_resource type="Resource" uid="uid://dlwdpgqmjo3m1" path="res://levels/waves/wave_01.tres" id="7_rtcij"]
 [ext_resource type="Script" uid="uid://b37bjh3fwa5hn" path="res://levels/tower_placer.gd" id="8_d5x7l"]
+[ext_resource type="Script" uid="uid://croj2e3fn4gga" path="res://levels/hud.gd" id="9_rtcij"]
+[ext_resource type="Texture2D" uid="uid://c7v0d2wlcw07f" path="res://entities/towers/tower_range_circle.tres" id="9_ukwr8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjsbj"]
 texture = ExtResource("1_80vhd")
@@ -285,25 +287,47 @@ waves = Array[ExtResource("6_d5x7l")]([ExtResource("7_rtcij")])
 script = ExtResource("3_cwqvt")
 debug_draw = true
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=642210875]
+position = Vector2(960, 540)
+
 [node name="TowerPlacer" type="Control" parent="." unique_id=640416552]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1016.0
 script = ExtResource("8_d5x7l")
 tower_scene = ExtResource("3_5mrsh")
 
-[node name="Control" type="Control" parent="." unique_id=75655629]
+[node name="RangePreview" type="Sprite2D" parent="TowerPlacer" unique_id=379639746]
+z_index = -1
+texture_filter = 2
+texture = ExtResource("9_ukwr8")
+
+[node name="HUD" type="Control" parent="." unique_id=75655629]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 64.0
+offset_top = 1016.0
+offset_right = 1856.0
+offset_bottom = 1080.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+script = ExtResource("9_rtcij")
 
-[node name="Button" type="Button" parent="Control" unique_id=1222682421]
-layout_mode = 1
-offset_right = 37.0
-offset_bottom = 31.0
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD" unique_id=1933080721]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="btnExit" type="Button" parent="HUD/HBoxContainer" unique_id=1222682421]
+layout_mode = 2
 text = "Exit
 "
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[node name="btnBuyTower" type="Button" parent="HUD/HBoxContainer" unique_id=1285973923]
+layout_mode = 2
+toggle_mode = true
+text = "Buy Tower"
+
+[connection signal="pressed" from="HUD/HBoxContainer/btnExit" to="." method="_on_button_pressed"]

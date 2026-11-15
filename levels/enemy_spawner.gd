@@ -17,14 +17,14 @@ func _ready() -> void:
 			for _j: int in group.count:
 				if not is_inside_tree():
 					return
-				_spawn(group.enemy_scene)
+				spawn(group.enemy_scene)
 				await get_tree().create_timer(group.interval).timeout
 		if i < waves.size() - 1 and is_inside_tree():
 			await get_tree().create_timer(waves[i].delay_after_wave).timeout
 	if is_inside_tree():
 		all_waves_completed.emit()
 
-func _spawn(scene: PackedScene) -> void:
+func spawn(scene: PackedScene) -> void:
 	var enemy: Enemy = scene.instantiate() as Enemy
 	var row: int = randi_range(FlowField.AREA.position.y, FlowField.AREA.end.y - 1)
 	var row_y: float = ground.to_global(ground.map_to_local(Vector2i(0, row))).y

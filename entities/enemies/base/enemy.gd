@@ -2,8 +2,8 @@ class_name Enemy extends Area2D
 
 @export var speed: float = 100.0
 @export var mass: float = 1.0
-@export var screen_margin: float = 100.0
-@export var health: float = 500000.0
+@export var screen_margin: float = 500.0
+@export var health: float = 1000.0
 
 var velocity: Vector2 = Vector2.ZERO
 var flow_field: FlowField
@@ -14,6 +14,7 @@ var flow_field: FlowField
 @onready var health_bar = $HealthBar
 
 func _ready() -> void:
+	state_label.visible = GameManager.show_debug
 	health_bar.max_value = health
 	health_bar.value = health
 	flow_field = get_tree().get_first_node_in_group("flow_field") as FlowField
