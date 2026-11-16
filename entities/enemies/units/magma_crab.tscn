@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://dgopn7vkdp38y"]
+
+[ext_resource type="PackedScene" uid="uid://cwvbkh7jhqyh" path="res://entities/enemies/base/enemy.tscn" id="1_yj1c6"]
+[ext_resource type="Texture2D" uid="uid://bhy336jyqqgwm" path="res://assets/enemies/Magma Crab.png" id="2_12dds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj1c6"]
+atlas = ExtResource("2_12dds")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12dds"]
+atlas = ExtResource("2_12dds")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuvd7"]
+atlas = ExtResource("2_12dds")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjhow"]
+atlas = ExtResource("2_12dds")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkko0"]
+atlas = ExtResource("2_12dds")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqhbq"]
+atlas = ExtResource("2_12dds")
+region = Rect2(320, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjnw0"]
+atlas = ExtResource("2_12dds")
+region = Rect2(384, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dx2a"]
+atlas = ExtResource("2_12dds")
+region = Rect2(448, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpc1n"]
+atlas = ExtResource("2_12dds")
+region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25wqg"]
+atlas = ExtResource("2_12dds")
+region = Rect2(576, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6jga"]
+atlas = ExtResource("2_12dds")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ki6"]
+atlas = ExtResource("2_12dds")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rql1"]
+atlas = ExtResource("2_12dds")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4emd"]
+atlas = ExtResource("2_12dds")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rw45"]
+atlas = ExtResource("2_12dds")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvxiq"]
+atlas = ExtResource("2_12dds")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg3gj"]
+atlas = ExtResource("2_12dds")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxcln"]
+atlas = ExtResource("2_12dds")
+region = Rect2(448, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcfcd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj1c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12dds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuvd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjhow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkko0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqhbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjnw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dx2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpc1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25wqg")
+}],
+"loop": 0,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6jga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6ki6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rql1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4emd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rw45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvxiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg3gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxcln")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[node name="MagmaCrab" unique_id=1016837423 instance=ExtResource("1_yj1c6")]
+speed = 75.0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
+sprite_frames = SubResource("SpriteFrames_xcfcd")
+animation = &"die"
+autoplay = "walk"
+flip_h = true

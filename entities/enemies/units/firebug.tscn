@@ -47,30 +47,6 @@ region = Rect2(1152, 512, 128, 64)
 atlas = ExtResource("2_ap5jf")
 region = Rect2(1280, 512, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxr1r"]
-atlas = ExtResource("2_ap5jf")
-region = Rect2(0, 128, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_73p4l"]
-atlas = ExtResource("2_ap5jf")
-region = Rect2(128, 128, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1wu33"]
-atlas = ExtResource("2_ap5jf")
-region = Rect2(256, 128, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8mokq"]
-atlas = ExtResource("2_ap5jf")
-region = Rect2(384, 128, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_patmn"]
-atlas = ExtResource("2_ap5jf")
-region = Rect2(512, 128, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tkihn"]
-atlas = ExtResource("2_ap5jf")
-region = Rect2(640, 128, 128, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdqay"]
 atlas = ExtResource("2_ap5jf")
 region = Rect2(0, 320, 128, 64)
@@ -145,29 +121,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wxr1r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73p4l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1wu33")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8mokq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_patmn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tkihn")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_hdqay")
 }, {
 "duration": 1.0,
@@ -204,10 +157,10 @@ health = 500.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_prjjb")
 animation = &"die"
 autoplay = "walk"
-frame_progress = 0.80809504
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1803021380]
 shape = SubResource("CapsuleShape2D_yc03e")

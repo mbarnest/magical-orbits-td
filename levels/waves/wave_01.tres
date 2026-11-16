@@ -1,23 +1,63 @@
 [gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://dlwdpgqmjo3m1"]
 
 [ext_resource type="Script" uid="uid://2phumfj2be2c" path="res://levels/waves/spawn_group.gd" id="1_veqiu"]
+[ext_resource type="PackedScene" uid="uid://py2kh6rekykx" path="res://entities/enemies/units/leafbug.tscn" id="2_hhj7f"]
 [ext_resource type="Script" uid="uid://768auqbojxvn" path="res://levels/waves/wave_data.gd" id="2_jws7s"]
+[ext_resource type="PackedScene" uid="uid://bqbx0bwqf8lu0" path="res://entities/enemies/units/clampbeetle.tscn" id="2_k7siw"]
 [ext_resource type="PackedScene" uid="uid://brukt14jhkvpx" path="res://entities/enemies/units/firebug.tscn" id="2_lqlpm"]
+[ext_resource type="PackedScene" uid="uid://b0ei3bb5kw2rj" path="res://entities/enemies/units/firewasp.tscn" id="4_etx7o"]
+[ext_resource type="PackedScene" uid="uid://co0f8likhcyem" path="res://entities/enemies/units/flying_locust.tscn" id="5_66ecy"]
+[ext_resource type="PackedScene" uid="uid://dgopn7vkdp38y" path="res://entities/enemies/units/magma_crab.tscn" id="7_2q1w3"]
+[ext_resource type="PackedScene" uid="uid://d0aok1yeeiyxi" path="res://entities/enemies/units/scorpion.tscn" id="8_iok6r"]
+[ext_resource type="PackedScene" uid="uid://b6q0dmgfd3vbh" path="res://entities/enemies/units/voidbutterfly.tscn" id="9_hgdfk"]
 
 [sub_resource type="Resource" id="Resource_lqlpm"]
 script = ExtResource("1_veqiu")
-enemy_scene = ExtResource("2_lqlpm")
+enemy_scene = ExtResource("2_k7siw")
+count = 10
 interval = 1.0
 metadata/_custom_type_script = "uid://2phumfj2be2c"
 
 [sub_resource type="Resource" id="Resource_ukwr8"]
 script = ExtResource("1_veqiu")
 enemy_scene = ExtResource("2_lqlpm")
-count = 5000
-interval = 0.1
+count = 10
+interval = 1.0
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_kngku"]
+script = ExtResource("1_veqiu")
+enemy_scene = ExtResource("4_etx7o")
+interval = 1.0
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_4hyhh"]
+script = ExtResource("1_veqiu")
+enemy_scene = ExtResource("5_66ecy")
+interval = 1.0
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_nqe30"]
+script = ExtResource("1_veqiu")
+enemy_scene = ExtResource("2_hhj7f")
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_vymcl"]
+script = ExtResource("1_veqiu")
+enemy_scene = ExtResource("7_2q1w3")
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_r81sb"]
+script = ExtResource("1_veqiu")
+enemy_scene = ExtResource("8_iok6r")
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_vws8p"]
+script = ExtResource("1_veqiu")
+enemy_scene = ExtResource("9_hgdfk")
 metadata/_custom_type_script = "uid://2phumfj2be2c"
 
 [resource]
 script = ExtResource("2_jws7s")
-groups = Array[ExtResource("1_veqiu")]([SubResource("Resource_lqlpm"), SubResource("Resource_ukwr8")])
+groups = Array[ExtResource("1_veqiu")]([SubResource("Resource_lqlpm"), SubResource("Resource_ukwr8"), SubResource("Resource_kngku"), SubResource("Resource_4hyhh"), SubResource("Resource_nqe30"), SubResource("Resource_vymcl"), SubResource("Resource_r81sb"), SubResource("Resource_vws8p")])
 metadata/_custom_type_script = "uid://768auqbojxvn"

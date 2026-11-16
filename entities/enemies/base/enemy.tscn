@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://cbti6ubpduujf" path="res://entities/enemies/base/states/enemy_launched.gd" id="6_ngu24"]
 [ext_resource type="Script" uid="uid://xnojceu0e71u" path="res://entities/enemies/base/states/enemy_transferred.gd" id="8_xcfcd"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bp71r"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_px7rq"]
 animations = [{
 "frames": [],
-"loop": 1,
+"loop": 0,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -28,7 +28,7 @@ collision_mask = 0
 script = ExtResource("1_yc03e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=871046538]
-sprite_frames = SubResource("SpriteFrames_bp71r")
+sprite_frames = SubResource("SpriteFrames_px7rq")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1803021380]

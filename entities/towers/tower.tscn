@@ -488,6 +488,7 @@ animations = [{
 }]
 
 [node name="Tower" type="Node2D" unique_id=653287468 groups=["towers"]]
+z_index = 3
 script = ExtResource("1_3qjjp")
 metadata/_edit_group_ = true
 

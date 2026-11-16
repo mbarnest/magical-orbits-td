@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://b6q0dmgfd3vbh"]
+
+[ext_resource type="PackedScene" uid="uid://cwvbkh7jhqyh" path="res://entities/enemies/base/enemy.tscn" id="1_h06qn"]
+[ext_resource type="Texture2D" uid="uid://cm1l35va4cv2h" path="res://assets/enemies/Voidbutterfly.png" id="2_wky8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia0wj"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyc75"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02w30"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tgms"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlpwc"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sq26"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(320, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6u3x"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(384, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf83p"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(448, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1nkv"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twccp"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(576, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc7ea"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(640, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaj8t"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(704, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5k6e"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(768, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1ybh"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7q2h"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcc3q"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e871h"]
+atlas = ExtResource("2_wky8f")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab66f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia0wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyc75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02w30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tgms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlpwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sq26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6u3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf83p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1nkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twccp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaj8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5k6e")
+}],
+"loop": 0,
+"name": &"die",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1ybh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7q2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcc3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e871h")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[node name="Voidbutterfly" unique_id=1016837423 instance=ExtResource("1_h06qn")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_ab66f")
+autoplay = "walk"
+frame_progress = 0.6881724
+
+[node name="HealthBar" parent="." index="4" unique_id=449927551]
+z_index = 1
