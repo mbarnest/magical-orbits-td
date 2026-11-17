@@ -30,7 +30,7 @@ func physics_update(_delta: float) -> void:
 				var dir_to_target: Vector2 = (target_tower.orbit_center.global_position - enemy.global_position).normalized()
 				var diff_angle: float = abs(tangent_dir.angle_to(dir_to_target))
 				
-				if diff_angle <= deg_to_rad(launch_angle_tolerance):
+				if diff_angle <= deg_to_rad(launch_angle_tolerance) and target_tower.max_attract_mass >= target_tower.load_bar.value + enemy.mass:
 					enemy.state_machine.transition_to("Transferred", {
 						"target_tower": target_tower,
 						"velocity": linear_velocity

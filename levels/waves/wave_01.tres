@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_lqlpm"]
 script = ExtResource("1_veqiu")
 enemy_scene = ExtResource("2_k7siw")
-count = 10
+count = 1000
 interval = 1.0
 metadata/_custom_type_script = "uid://2phumfj2be2c"
 

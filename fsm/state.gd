@@ -1,7 +1,7 @@
 class_name State extends Node
 
 # Called when entering the state
-func enter(_msg := {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	pass
 
 # Called when exiting the state

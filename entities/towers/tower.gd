@@ -1,9 +1,9 @@
 class_name Tower extends Node2D
 
-const LEVELS := {
-	1: { "radius": 150.0, "mass": 1000.0, "max_attract_mass": 1000.0 },
-	2: { "radius": 200.0, "mass": 2000.0, "max_attract_mass": 2000.0 },
-	3: { "radius": 250.0, "mass": 3000.0, "max_attract_mass": 3000.0 },
+const LEVELS : Dictionary = {
+	1: { "radius": 150.0, "mass": 1000.0, "max_attract_mass": 10.0 },
+	2: { "radius": 200.0, "mass": 2000.0, "max_attract_mass": 20.0 },
+	3: { "radius": 250.0, "mass": 3000.0, "max_attract_mass": 30.0 },
 }
 const ORBIT_MARGIN: int = 32
 
@@ -24,21 +24,26 @@ var orbiting_enemies: Array[Enemy] = []
 @onready var gem_sprite: AnimatedSprite2D = $GemSprite
 @onready var btn_target: TextureButton = $btnTarget
 @onready var btn_upgrade: TextureButton = $StateMenu/BtnUpgrade
+@onready var load_bar: ProgressBar = $LoadBar
+
 
 func _ready() -> void:
 	state_label.visible = GameManager.show_debug
 	SignalManager.transfer_mode_changed.connect(_on_transfer_mode_changed)
 	apply_level_stats()
 
+
 func upgrade() -> void:
 	level += 1
 	apply_level_stats()
 	SignalManager.towers_changed.emit()
 
+
 func apply_level_stats() -> void:
 	var stats: Dictionary = LEVELS[level]
 	mass = stats.mass
 	max_attract_mass = stats.max_attract_mass
+	load_bar.max_value = max_attract_mass
 	orbit_radius = stats.radius - ORBIT_MARGIN
 	range_shape.shape.radius = stats.radius
 
@@ -49,55 +54,71 @@ func apply_level_stats() -> void:
 	gem_sprite.play("idle_lvl%d" % level)
 	btn_upgrade.visible = level < LEVELS.size()
 
+
 func get_range_radius() -> float:
 	return range_shape.shape.radius
+
 
 func set_range_color(color: Color) -> void:
 	range_color.modulate = color
 
+
 func register_orbiting_enemy(enemy: Enemy) -> void:
 	orbiting_enemies.append(enemy)
+	load_bar.value += enemy.mass
+
 
 func unregister_orbiting_enemy(enemy: Enemy) -> void:
+	load_bar.value -= enemy.mass
 	orbiting_enemies.erase(enemy)
+
 
 func toggle_menu() -> void:
 	state_menu.visible = !state_menu.visible
 	if state_menu.visible:
 		move_to_front()
 
-func select_state(state_name: String, msg := {}) -> void:
+
+func select_state(state_name: String, msg: Dictionary = {}) -> void:
 	state_machine.transition_to(state_name, msg)
 	toggle_menu()
+
 
 func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
 	btn_target.visible = is_active and origin != self
 
+
 func _on_range_area_entered(area: Area2D) -> void:
-	if area.state_machine.current_state.name == "Move":
+	if area.state_machine.current_state.name == "Move" and load_bar.max_value >= load_bar.value + area.mass:
 		area.state_machine.transition_to("Attracted", {"tower": self})
 
-func _on_range_area_exited(area: Area2D) -> void:
-	if area.state_machine.current_state.name == "Attracted":
+
+func _on_range_area_exited(area: Enemy) -> void:
+	if area.state_machine.current_state.name == "Attracted" and area.state_machine.current_state.tower == self:
 		area.state_machine.transition_to("Move")
+
 
 func _on_btn_tower_pressed() -> void:
 	toggle_menu()
 
+
 func _on_btn_attacking_pressed() -> void:
 	select_state("Attacking")
+
 
 func _on_btn_orbiting_pressed() -> void:
 	select_state("Orbiting")
 
+
 func _on_btn_transferring_pressed() -> void:
 	select_state("Transferring", {"previous_state": state_machine.current_state.name})
+
 
 func _on_btn_target_pressed() -> void:
 	SignalManager.target_selected.emit(self)
 	btn_target.hide()
 
 
-func _on_btn_upgrade_pressed():
+func _on_btn_upgrade_pressed() -> void:
 	upgrade()
 	toggle_menu()

@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	current_state.physics_update(delta)
 
 # Switch from current_state to target_state
-func transition_to(target_state_name: String, msg := {}) -> void:
+func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	current_state.exit()
 	
 	current_state = get_node(target_state_name) as State

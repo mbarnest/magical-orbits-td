@@ -19,7 +19,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0x3j"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcfcd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m53j6"]
 bg_color = Color(0.78431374, 0.19607843, 0.19607843, 1)
 
 [node name="Enemy" type="Area2D" unique_id=1016837423]
@@ -72,5 +72,5 @@ offset_left = -25.0
 offset_top = -25.0
 offset_right = 25.0
 offset_bottom = -20.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_xcfcd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m53j6")
 show_percentage = false

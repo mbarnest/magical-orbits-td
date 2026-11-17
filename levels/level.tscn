@@ -489,13 +489,14 @@ frame_progress = 0.6137739
 
 [node name="Towers" type="Node2D" parent="." unique_id=1072965597]
 
+[node name="FlowField" type="Node2D" parent="." unique_id=144944293 groups=["flow_field"]]
+z_index = 1
+script = ExtResource("3_cwqvt")
+debug_draw = true
+
 [node name="EnemySpawner" type="Marker2D" parent="." unique_id=1537990598]
 script = ExtResource("5_gjl0y")
 waves = Array[ExtResource("6_d5x7l")]([ExtResource("7_rtcij")])
-
-[node name="FlowField" type="Node2D" parent="." unique_id=144944293 groups=["flow_field"]]
-script = ExtResource("3_cwqvt")
-debug_draw = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=642210875]
 position = Vector2(960, 540)

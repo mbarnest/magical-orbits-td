@@ -487,6 +487,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhyl5"]
+bg_color = Color(0.78431374, 0.19607843, 0.19607843, 1)
+
 [node name="Tower" type="Node2D" unique_id=653287468 groups=["towers"]]
 z_index = 3
 script = ExtResource("1_3qjjp")
@@ -545,6 +548,14 @@ offset_right = 32.0
 offset_bottom = 96.0
 flat = true
 
+[node name="LoadBar" type="ProgressBar" parent="." unique_id=1776746123]
+offset_left = -30.0
+offset_top = 91.0
+offset_right = 30.0
+offset_bottom = 95.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_fhyl5")
+show_percentage = false
+
 [node name="StateMenu" type="Control" parent="." unique_id=2138619447]
 visible = false
 z_index = 1
@@ -582,10 +593,11 @@ texture_normal = ExtResource("14_m53j6")
 [node name="btnTarget" type="TextureButton" parent="." unique_id=714129651]
 visible = false
 z_index = 2
-offset_left = -128.0
-offset_top = -100.0
-offset_right = 128.0
-offset_bottom = 156.0
+offset_left = -38.0
+offset_top = 10.0
+offset_right = 218.0
+offset_bottom = 266.0
+scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("10_it6y3")
 
 [connection signal="area_entered" from="TowerRange" to="." method="_on_range_area_entered"]

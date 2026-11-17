@@ -1,7 +1,7 @@
 class_name FlowField extends Node2D
 
-const AREA := Rect2i(0, 1, 30, 14)
-const DIRS := [Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN, Vector2i(1, -1), Vector2i(1, 1)]
+const AREA: Rect2i = Rect2i(0, 1, 30, 14)
+const DIRS: Array = [Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN, Vector2i(1, -1), Vector2i(1, 1)]
 
 @onready var ground: TileMapLayer = $"../Map/Ground"
 @onready var towers: Node2D = $"../Towers"
@@ -27,6 +27,8 @@ func recalculate() -> void:
 
 func calculate_influence() -> void:
 	influence = grid(0.0)
+	influence[29][1]=INF
+	influence[29][14]=INF
 	for tower: Tower in towers.get_children():
 		block_tower_cells(ground.local_to_map(tower.global_position) + Vector2i.DOWN)
 		set_tower_weight(tower)
