@@ -2,7 +2,7 @@ class_name EnemyLaunched extends EnemyState
 
 var launch_velocity: Vector2
 
-func enter(msg := {}) -> void:
+func enter(msg: Dictionary = {}) -> void:
 	enemy.area_entered.connect(_on_area_entered)
 	
 	enemy.collision_layer = 0

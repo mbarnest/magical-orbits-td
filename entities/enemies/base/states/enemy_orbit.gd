@@ -6,7 +6,7 @@ var current_radius: float
 var angular_velocity: float
 var target_angular_velocity: float
 
-func enter(msg := {}) -> void:
+func enter(msg: Dictionary = {}) -> void:
 	tower = msg.tower
 	tower.register_orbiting_enemy(enemy)
 	
@@ -29,7 +29,7 @@ func exit():
 func physics_update(delta: float) -> void:
 	# Soft transition between the actual radius and velocity to target radius and velocity
 	current_radius = lerp(current_radius, tower.orbit_radius, delta)
-	# angular_velocity = lerp(angular_velocity, target_angular_velocity, delta)
+	angular_velocity = lerp(angular_velocity, target_angular_velocity, delta)
 	
 	current_angle += angular_velocity * delta
 	enemy.global_position = tower.orbit_center.global_position + Vector2(cos(current_angle), sin(current_angle)) * current_radius
