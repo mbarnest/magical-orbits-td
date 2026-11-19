@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0lqsmuvgr0kx"
-path="res://.godot/imported/ui_orbiting.png-c7e8bd713be19a17a3175d3ca9a93e6f.ctex"
+uid="uid://fautgeitany6"
+path="res://.godot/imported/ui_transferring_64.png-940526e5974c2f6f072774fd9db0f910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/towers/ui_orbiting.png"
-dest_files=["res://.godot/imported/ui_orbiting.png-c7e8bd713be19a17a3175d3ca9a93e6f.ctex"]
+source_file="res://assets/towers/ui_transferring_64.png"
+dest_files=["res://.godot/imported/ui_transferring_64.png-940526e5974c2f6f072774fd9db0f910.ctex"]
 
 [params]
 

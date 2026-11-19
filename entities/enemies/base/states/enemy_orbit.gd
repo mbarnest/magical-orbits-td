@@ -20,7 +20,7 @@ func enter(msg: Dictionary = {}) -> void:
 	# Relative position and velocity determines the spin direction
 	var spin_direction = -1.0 if vector_to_enemy.cross(enemy.velocity) < 0 else 1.0
 	
-	target_angular_velocity = sqrt((GameManager.G * tower.mass) / pow(tower.orbit_radius, 3)) * spin_direction
+	target_angular_velocity = min(sqrt((GameManager.G * tower.mass) / pow(tower.orbit_radius, 3)) * spin_direction, GameManager.MAX_ORBIT_VELOCITY)
 	angular_velocity = (enemy.velocity.length() / max(current_radius, 1.0)) * spin_direction
 
 func exit():
@@ -29,7 +29,7 @@ func exit():
 func physics_update(delta: float) -> void:
 	# Soft transition between the actual radius and velocity to target radius and velocity
 	current_radius = lerp(current_radius, tower.orbit_radius, delta)
-	angular_velocity = lerp(angular_velocity, target_angular_velocity, delta)
+	#angular_velocity = lerp(angular_velocity, target_angular_velocity, delta)
 	
 	current_angle += angular_velocity * delta
 	enemy.global_position = tower.orbit_center.global_position + Vector2(cos(current_angle), sin(current_angle)) * current_radius

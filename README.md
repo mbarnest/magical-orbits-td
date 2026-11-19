@@ -27,18 +27,20 @@ https://docs.godotengine.org/en/stable/tutorials/editor/project\_manager.html#op
 ## Assets
 
 **Enemies:**
-[Spire – Enemy Pack 1](https://itch.io) by **Foozle** (License: CC0).
-[Spire – Enemy Pack 2](https://itch.io) by **Foozle** (License: CC0).
+[Spire – Enemy Pack 1](https://itch.io) by **Foozle** (License: CC0) and [Spire – Enemy Pack 2](https://itch.io) by **Foozle** (License: CC0).
+
 
 **Towers:**
 [Spire – Tower Pack 1](https://itch.io) by **Foozle** (License: CC0).
 
+
 **Map / Tileset:**
 [Spire – Tileset 1](https://itch.io) by **Foozle** (License: CC0).
+
 
 **Walls and Bastions:**
 [Zelda-like tilesets and sprites](https://opengameart.org/content/zelda-like-tilesets-and-sprites) by **ArMM198** (License: CC0).
 
+
 **UI Icons:**
 [Game-icons.net](https://game-icons.net) by various authors (License: CC BY 3.0).
-

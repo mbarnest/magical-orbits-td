@@ -1,18 +1,19 @@
 class_name Tower extends Node2D
 
 const LEVELS : Dictionary = {
-	1: { "radius": 150.0, "mass": 1000.0, "max_attract_mass": 10.0 },
-	2: { "radius": 200.0, "mass": 2000.0, "max_attract_mass": 20.0 },
-	3: { "radius": 250.0, "mass": 3000.0, "max_attract_mass": 30.0 },
+	1: { "radius": 180.0, "mass": 10000.0, "max_attract_mass": 10.0 },
+	2: { "radius": 230.0, "mass": 20000.0, "max_attract_mass": 20.0 },
+	3: { "radius": 300.0, "mass": 30000.0, "max_attract_mass": 30.0 },
 }
 const ORBIT_MARGIN: int = 32
 
-@export var orbit_radius: float = 128.0
+@export var orbit_radius: float
 
 var level: int = 1
-var mass: float = 0.0
-var max_attract_mass: float = 0.0
-var orbiting_enemies: Array[Enemy] = []
+var mass: float
+var max_attract_mass: float
+var orbiting_enemies: Array[Enemy]
+var demolish_tower: int = 1
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var state_label: Label = $StateLabel
@@ -24,6 +25,7 @@ var orbiting_enemies: Array[Enemy] = []
 @onready var gem_sprite: AnimatedSprite2D = $GemSprite
 @onready var btn_target: TextureButton = $btnTarget
 @onready var btn_upgrade: TextureButton = $StateMenu/BtnUpgrade
+@onready var btn_demolish: TextureButton = $StateMenu/BtnDemolish
 @onready var load_bar: ProgressBar = $LoadBar
 
 
@@ -122,3 +124,15 @@ func _on_btn_target_pressed() -> void:
 func _on_btn_upgrade_pressed() -> void:
 	upgrade()
 	toggle_menu()
+
+
+func _on_btn_demolish_pressed():
+	match demolish_tower:
+		1:
+			demolish_tower += 1
+			btn_demolish.modulate = Color.ORANGE
+		2:
+			demolish_tower += 1
+			btn_demolish.modulate = Color.FIREBRICK
+		3:
+			select_state("Demolishing")

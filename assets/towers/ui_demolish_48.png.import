@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi8qgi5vcf0jb"
-path="res://.godot/imported/ui_attacking.png-484c6d188ed4fc6d6bd0a8354f16b3a3.ctex"
+uid="uid://84cvbscghe76"
+path="res://.godot/imported/ui_demolish_48.png-c54c2077dc054c245cd736ad6bf6bcdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/towers/ui_attacking.png"
-dest_files=["res://.godot/imported/ui_attacking.png-484c6d188ed4fc6d6bd0a8354f16b3a3.ctex"]
+source_file="res://assets/towers/ui_demolish_48.png"
+dest_files=["res://.godot/imported/ui_demolish_48.png-c54c2077dc054c245cd736ad6bf6bcdc.ctex"]
 
 [params]
 

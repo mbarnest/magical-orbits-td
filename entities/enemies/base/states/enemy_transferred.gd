@@ -29,7 +29,7 @@ func physics_update(delta: float) -> void:
 
 	enemy.velocity += force_dir * gravity_acceleration * delta
 	# Limit transfer velocity
-	# enemy.velocity = enemy.velocity.limit_length(GameManager.MAX_TRANSFER_SPEED)
+	enemy.velocity = enemy.velocity.limit_length(GameManager.MAX_TRANSFER_SPEED)
 	
 	enemy.global_position += enemy.velocity * delta
 
