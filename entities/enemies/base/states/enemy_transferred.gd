@@ -15,6 +15,10 @@ func exit() -> void:
 	pass
 	
 func physics_update(delta: float) -> void:
+	if not is_instance_valid(target_tower):
+		enemy.global_position += enemy.velocity * delta
+		return
+	
 	var vector_to_tower: Vector2 = target_tower.orbit_center.global_position - enemy.global_position
 	var tower_distance: float = vector_to_tower.length()
 	var direction: Vector2 = vector_to_tower.normalized()

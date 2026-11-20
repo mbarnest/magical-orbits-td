@@ -9,21 +9,18 @@ const DIRS: Array = [Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN, Vector2i(1, -1)
 
 @export var i_max: float = 3.5
 @export var attenuation_k: float = 0.5
-@export var debug_draw: bool = false
 
 var influence: Array = []
 var vectors: Array = []
 
 func _ready() -> void:
-	visible = GameManager.show_debug
 	SignalManager.towers_changed.connect(recalculate)
 	recalculate()
 
 func recalculate() -> void:
 	calculate_influence()
 	calculate_vectors()
-	if debug_draw:
-		queue_redraw()
+	queue_redraw()
 
 func calculate_influence() -> void:
 	influence = grid(0.0)
@@ -117,13 +114,12 @@ func get_direction(pos: Vector2) -> Vector2:
 	return (target - pos).normalized()
 
 func _draw() -> void:
-	if not debug_draw or vectors.is_empty():
-		return
-	for x: int in range(AREA.position.x, AREA.end.x):
-		for y: int in range(AREA.position.y, AREA.end.y):
-			var dir: Vector2i = vectors[x][y]
-			if dir != Vector2i.ZERO:
-				var v: Vector2 = Vector2(dir).normalized()
-				var p: Vector2 = ground.map_to_local(Vector2i(x, y))
-				draw_line(p - v * 12.0, p + v * 16.0, Color.CYAN, 2.0)
-				draw_circle(p + v * 16.0, 3.0, Color.WHITE)
+	if  GameManager.show_debug:
+		for x: int in range(AREA.position.x, AREA.end.x):
+			for y: int in range(AREA.position.y, AREA.end.y):
+				var dir: Vector2i = vectors[x][y]
+				if dir != Vector2i.ZERO:
+					var v: Vector2 = Vector2(dir).normalized()
+					var p: Vector2 = ground.map_to_local(Vector2i(x, y))
+					draw_line(p - v * 12.0, p + v * 16.0, Color.CYAN, 2.0)
+					draw_circle(p + v * 16.0, 3.0, Color.WHITE)

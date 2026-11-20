@@ -11,7 +11,7 @@ const COLOR_INVALID := Color(1, 0.2, 0.2, 0.2)
 @onready var range_preview: Sprite2D = $RangePreview
 @onready var tile_size := Vector2(ground.tile_set.tile_size)
 
-var occupied: Array[Vector2i] = []
+#var occupied: Array[Vector2i] = []
 
 func _ready() -> void:
 	hide()
@@ -37,7 +37,8 @@ func add_button(cell: Vector2i) -> void:
 	btn.global_position = ground.map_to_local(cell) - tile_size * 0.5
 
 func can_build(cell: Vector2i) -> bool:
-	return cell not in occupied and flow_field.can_place(cell)
+	#return cell not in occupied and flow_field.can_place(cell)
+	return flow_field.can_place(cell)
 
 func on_cell_hovered(cell: Vector2i) -> void:
 	range_preview.modulate = COLOR_VALID if can_build(cell) else COLOR_INVALID
@@ -52,7 +53,7 @@ func place_tower(cell: Vector2i) -> void:
 	tower.global_position = ground.map_to_local(cell + Vector2i.UP)
 	towers.add_child(tower)
 
-	occupied.append_array([cell, cell + Vector2i.UP])
+	#occupied.append_array([cell, cell + Vector2i.UP])
 	range_preview.hide()
 	SignalManager.towers_changed.emit()
 	SignalManager.build_mode_active.emit(false)

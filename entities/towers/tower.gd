@@ -27,6 +27,8 @@ var demolish_tower: int = 1
 @onready var btn_upgrade: TextureButton = $StateMenu/BtnUpgrade
 @onready var btn_demolish: TextureButton = $StateMenu/BtnDemolish
 @onready var load_bar: ProgressBar = $LoadBar
+@onready var tower_range = $TowerRange
+@onready var explosion = $Explosion
 
 
 func _ready() -> void:
@@ -135,4 +137,9 @@ func _on_btn_demolish_pressed():
 			demolish_tower += 1
 			btn_demolish.modulate = Color.FIREBRICK
 		3:
+			state_menu.queue_free()
 			select_state("Demolishing")
+
+
+func _on_tree_exited():
+	SignalManager.towers_changed.emit()

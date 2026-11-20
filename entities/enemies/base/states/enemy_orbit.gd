@@ -24,9 +24,14 @@ func enter(msg: Dictionary = {}) -> void:
 	angular_velocity = (enemy.velocity.length() / max(current_radius, 1.0)) * spin_direction
 
 func exit():
-	tower.unregister_orbiting_enemy(enemy)
+	if is_instance_valid(tower):
+		tower.unregister_orbiting_enemy(enemy)
 
 func physics_update(delta: float) -> void:
+	if not is_instance_valid(tower):
+		enemy.state_machine.transition_to("Die")
+		return
+		
 	# Soft transition between the actual radius and velocity to target radius and velocity
 	current_radius = lerp(current_radius, tower.orbit_radius, delta)
 	#angular_velocity = lerp(angular_velocity, target_angular_velocity, delta)

@@ -492,7 +492,6 @@ frame_progress = 0.6137739
 [node name="FlowField" type="Node2D" parent="." unique_id=144944293 groups=["flow_field"]]
 z_index = 1
 script = ExtResource("3_cwqvt")
-debug_draw = true
 
 [node name="EnemySpawner" type="Marker2D" parent="." unique_id=1537990598]
 script = ExtResource("5_gjl0y")
@@ -538,6 +537,7 @@ text = "Exit
 
 [node name="btnBuyTower" type="Button" parent="HUD/HBoxContainer" unique_id=1285973923]
 layout_mode = 2
+focus_mode = 0
 toggle_mode = true
 text = "Buy Tower"
 
