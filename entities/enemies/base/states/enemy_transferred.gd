@@ -8,6 +8,8 @@ func enter(msg := {}) -> void:
 	
 	enemy.animated_sprite.self_modulate = Color.GREEN
 	
+	SignalManager.hud_update.emit()
+
 	# enemy.collision_layer = 0
 	# enemy.collision_mask = 0
 

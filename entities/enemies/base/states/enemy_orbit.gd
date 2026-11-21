@@ -22,6 +22,8 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	target_angular_velocity = min(sqrt((GameManager.G * tower.mass) / pow(tower.orbit_radius, 3)) * spin_direction, GameManager.MAX_ORBIT_VELOCITY)
 	angular_velocity = (enemy.velocity.length() / max(current_radius, 1.0)) * spin_direction
+	
+	SignalManager.hud_update.emit()
 
 func exit():
 	if is_instance_valid(tower):

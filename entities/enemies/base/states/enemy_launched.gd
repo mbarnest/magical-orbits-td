@@ -4,6 +4,7 @@ var launch_velocity: Vector2
 
 func enter(msg: Dictionary = {}) -> void:
 	enemy.area_entered.connect(_on_area_entered)
+	SignalManager.hud_update.emit()
 	
 	enemy.collision_layer = 0
 	enemy.collision_mask = 0

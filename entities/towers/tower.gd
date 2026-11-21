@@ -78,6 +78,9 @@ func unregister_orbiting_enemy(enemy: Enemy) -> void:
 
 
 func toggle_menu() -> void:
+	demolish_tower = 1
+	btn_demolish.modulate = Color.WHITE
+
 	state_menu.visible = !state_menu.visible
 	if state_menu.visible:
 		move_to_front()
@@ -89,7 +92,8 @@ func select_state(state_name: String, msg: Dictionary = {}) -> void:
 
 
 func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
-	btn_target.visible = is_active and origin != self
+	if origin.global_position.distance_to(global_position) > origin.get_range_radius():
+		btn_target.visible = is_active and origin != self
 
 
 func _on_range_area_entered(area: Area2D) -> void:

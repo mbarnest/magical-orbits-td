@@ -1,6 +1,6 @@
 class_name TowerAttacking extends TowerState
 
-@export_range(5.0, 30.0) var launch_angle_tolerance: float = 5.0
+@export_range(0.1, 30.0) var launch_window_angle: float = 30.0
 var target: Enemy
 
 func enter(_msg := {}) -> void:
@@ -12,19 +12,19 @@ func exit() -> void:
 	
 func physics_update(_delta: float) -> void:
 	target = get_most_advanced_enemy()
+	if not target:
+		return
 
-	#if not is_instance_valid(target):
-		#return
+	for enemy in tower.orbiting_enemies:
+		var vel: Vector2 = enemy.state_machine.current_state.get_tangential_velocity()
+		var speed: float = vel.length()
 
-	if target:
-		for enemy in tower.orbiting_enemies:
-			var linear_velocity: Vector2 = enemy.state_machine.current_state.get_tangential_velocity()
-			var tangent_dir: Vector2 = linear_velocity.normalized()
-			var dir_to_target: Vector2 = (target.global_position - enemy.global_position).normalized()
-			var diff_angle: float = abs(tangent_dir.angle_to(dir_to_target))
-			
-			if diff_angle <= deg_to_rad(launch_angle_tolerance):
-				enemy.state_machine.transition_to("Launched", {"velocity": linear_velocity})
+		var time_to_target: float = enemy.global_position.distance_to(target.global_position) / speed
+		var target_future_position: Vector2 = (target.global_position + target.velocity * time_to_target) - enemy.global_position
+
+		if abs(vel.angle_to(target_future_position)) <= deg_to_rad(launch_window_angle):
+			enemy.state_machine.transition_to("Launched", {"velocity": target_future_position.normalized() * speed})
+
 
 func get_most_advanced_enemy() -> Enemy:
 	var most_advanced_enemy: Enemy = null

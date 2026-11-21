@@ -7,10 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dqswdv7kq6j6e" path="res://assets/map/Overworld.png" id="3_pb8y7"]
 [ext_resource type="Script" uid="uid://cp87n5uljwup6" path="res://levels/enemy_spawner.gd" id="5_gjl0y"]
 [ext_resource type="Script" uid="uid://768auqbojxvn" path="res://levels/waves/wave_data.gd" id="6_d5x7l"]
+[ext_resource type="Script" uid="uid://2phumfj2be2c" path="res://levels/waves/spawn_group.gd" id="7_d7v53"]
 [ext_resource type="Resource" uid="uid://dlwdpgqmjo3m1" path="res://levels/waves/wave_01.tres" id="7_rtcij"]
+[ext_resource type="PackedScene" uid="uid://py2kh6rekykx" path="res://entities/enemies/units/leafbug.tscn" id="8_0qmeg"]
 [ext_resource type="Script" uid="uid://b37bjh3fwa5hn" path="res://levels/tower_placer.gd" id="8_d5x7l"]
 [ext_resource type="Script" uid="uid://croj2e3fn4gga" path="res://levels/hud.gd" id="9_rtcij"]
 [ext_resource type="Texture2D" uid="uid://c7v0d2wlcw07f" path="res://entities/towers/tower_range_circle.tres" id="9_ukwr8"]
+[ext_resource type="Theme" uid="uid://c25u1yr2s7vi2" path="res://assets/hud/theme_pixel.tres" id="11_hy0rb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjsbj"]
 texture = ExtResource("1_80vhd")
@@ -439,6 +442,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_mxp4k"]
+script = ExtResource("7_d7v53")
+enemy_scene = ExtResource("8_0qmeg")
+count = 100
+interval = 0.5
+metadata/_custom_type_script = "uid://2phumfj2be2c"
+
+[sub_resource type="Resource" id="Resource_hy0rb"]
+script = ExtResource("6_d5x7l")
+groups = Array[ExtResource("7_d7v53")]([SubResource("Resource_mxp4k")])
+metadata/_custom_type_script = "uid://768auqbojxvn"
+
 [node name="Level" type="Node2D" unique_id=1811116787]
 script = ExtResource("1_hjsbj")
 
@@ -485,9 +500,9 @@ sprite_frames = SubResource("SpriteFrames_pb8y7")
 autoplay = "default"
 frame_progress = 0.6137739
 
-[node name="Enemies" type="Node2D" parent="." unique_id=1470342175]
-
 [node name="Towers" type="Node2D" parent="." unique_id=1072965597]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1470342175]
 
 [node name="FlowField" type="Node2D" parent="." unique_id=144944293 groups=["flow_field"]]
 z_index = 1
@@ -495,7 +510,7 @@ script = ExtResource("3_cwqvt")
 
 [node name="EnemySpawner" type="Marker2D" parent="." unique_id=1537990598]
 script = ExtResource("5_gjl0y")
-waves = Array[ExtResource("6_d5x7l")]([ExtResource("7_rtcij")])
+waves = Array[ExtResource("6_d5x7l")]([SubResource("Resource_hy0rb"), ExtResource("7_rtcij")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=642210875]
 position = Vector2(960, 540)
@@ -515,30 +530,75 @@ texture_filter = 2
 texture = ExtResource("9_ukwr8")
 
 [node name="HUD" type="Control" parent="." unique_id=75655629]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 64.0
-offset_top = 1016.0
+offset_top = 1008.0
 offset_right = 1856.0
-offset_bottom = 1080.0
+offset_bottom = 1072.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("11_hy0rb")
 script = ExtResource("9_rtcij")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD" unique_id=1933080721]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PanelContainer" type="PanelContainer" parent="HUD" unique_id=1713310544]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="btnExit" type="Button" parent="HUD/HBoxContainer" unique_id=1222682421]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer" unique_id=1933080721]
 layout_mode = 2
-text = "Exit
-"
 
-[node name="btnBuyTower" type="Button" parent="HUD/HBoxContainer" unique_id=1285973923]
+[node name="BtnBuyTower" type="Button" parent="HUD/PanelContainer/HBoxContainer" unique_id=1285973923]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
 text = "Buy Tower"
 
-[connection signal="pressed" from="HUD/HBoxContainer/btnExit" to="." method="_on_button_pressed"]
+[node name="LblMana" type="Label" parent="HUD/PanelContainer/HBoxContainer" unique_id=911330343]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Mana: ??"
+
+[node name="VSeparator" type="VSeparator" parent="HUD/PanelContainer/HBoxContainer" unique_id=1977545322]
+layout_mode = 2
+
+[node name="LblWave" type="Label" parent="HUD/PanelContainer/HBoxContainer" unique_id=955172256]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Wave: ??/??"
+
+[node name="VSeparator2" type="VSeparator" parent="HUD/PanelContainer/HBoxContainer" unique_id=879115442]
+layout_mode = 2
+
+[node name="LblEnemiesLeft" type="Label" parent="HUD/PanelContainer/HBoxContainer" unique_id=1365871544]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Enemies Left: ??"
+
+[node name="VSeparator3" type="VSeparator" parent="HUD/PanelContainer/HBoxContainer" unique_id=185975234]
+layout_mode = 2
+
+[node name="LblEnemiesCaptured" type="Label" parent="HUD/PanelContainer/HBoxContainer" unique_id=1131647925]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Enemies Captured: ??"
+
+[node name="VSeparator4" type="VSeparator" parent="HUD/PanelContainer/HBoxContainer" unique_id=715665238]
+layout_mode = 2
+
+[node name="LblPeopleTown" type="Label" parent="HUD/PanelContainer/HBoxContainer" unique_id=1868431461]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "People in town: 100"
+
+[node name="BtnExit" type="Button" parent="HUD/PanelContainer/HBoxContainer" unique_id=1222682421]
+layout_mode = 2
+text = "Exit
+"
+
+[connection signal="pressed" from="HUD/PanelContainer/HBoxContainer/BtnExit" to="." method="_on_button_pressed"]

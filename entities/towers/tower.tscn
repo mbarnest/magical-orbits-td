@@ -415,8 +415,6 @@ sprite_frames = SubResource("SpriteFrames_j8abd")
 animation = &"idle_lvl1"
 autoplay = "idle_lvl1"
 
-[node name="TransferLine" type="Line2D" parent="." unique_id=1231439643]
-
 [node name="Explosion" type="GPUParticles2D" parent="." unique_id=995176128]
 emitting = false
 amount = 50
@@ -431,7 +429,6 @@ initial_state = NodePath("Attacking")
 
 [node name="Attacking" type="Node" parent="StateMachine" unique_id=285885001]
 script = ExtResource("7_irjtw")
-launch_angle_tolerance = 10.0
 
 [node name="Orbiting" type="Node" parent="StateMachine" unique_id=1304884465]
 script = ExtResource("8_wfufn")
@@ -465,6 +462,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_fhyl5")
 show_percentage = false
 
 [node name="StateMenu" type="Control" parent="." unique_id=2138619447]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -482,6 +480,7 @@ offset_bottom = 231.0
 
 [node name="BtnAttacking" type="TextureButton" parent="StateMenu/VBoxContainer" unique_id=1395370267]
 layout_mode = 2
+tooltip_text = "Attack"
 texture_normal = ExtResource("11_m53j6")
 
 [node name="BtnOrbiting" type="TextureButton" parent="StateMenu/VBoxContainer" unique_id=1817701052]

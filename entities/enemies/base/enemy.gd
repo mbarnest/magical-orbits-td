@@ -33,3 +33,15 @@ func take_damage(amount: float) -> void:
 	
 	if health <= 0:
 		state_machine.transition_to("Die")
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if state_machine.current_state.name in ["Attracted", "Orbit", "Launched", "Transferred"]:
+		return
+	
+	if state_machine.current_state.name == "Move":
+		GameManager.people_town -= 1
+		SignalManager.hud_update.emit()
+		return
+	
+	queue_free()

@@ -3,6 +3,8 @@ class_name TowerDemolishing extends TowerState
 func enter(_msg: Dictionary = {}) -> void:
 	tower.state_label.text = "Demolishing"
 	
+	SignalManager.tower_demolished.emit(tower)
+	
 	tower.load_bar.hide()
 	tower.gem_sprite.hide()
 	

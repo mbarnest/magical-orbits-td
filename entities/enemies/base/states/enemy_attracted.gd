@@ -4,6 +4,9 @@ var tower: Tower
 
 func enter(msg := {}) -> void:
 	tower = msg.tower
+	
+	SignalManager.hud_update.emit()
+
 
 func exit() -> void:
 	pass
