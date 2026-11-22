@@ -1,9 +1,9 @@
 class_name Tower extends Node2D
 
 const LEVELS : Dictionary = {
-	1: { "radius": 180.0, "mass": 10000.0, "max_attract_mass": 10.0 },
-	2: { "radius": 230.0, "mass": 20000.0, "max_attract_mass": 20.0 },
-	3: { "radius": 300.0, "mass": 30000.0, "max_attract_mass": 30.0 },
+	1: { "radius": 180.0, "mass": 1000.0, "max_attract_mass": 10.0 },
+	2: { "radius": 230.0, "mass": 2000.0, "max_attract_mass": 20.0 },
+	3: { "radius": 300.0, "mass": 3000.0, "max_attract_mass": 30.0 },
 }
 const ORBIT_MARGIN: int = 32
 
@@ -29,11 +29,16 @@ var demolish_tower: int = 1
 @onready var load_bar: ProgressBar = $LoadBar
 @onready var tower_range = $TowerRange
 @onready var explosion = $Explosion
+@onready var btn_tower = $btnTower
 
 
 func _ready() -> void:
 	state_label.visible = GameManager.show_debug
 	SignalManager.transfer_mode_changed.connect(_on_transfer_mode_changed)
+	SignalManager.hud_update.connect(_update_upgrade_button)
+	
+	btn_upgrade.tooltip_text = "Upgrade. Cost: " + str(GameManager.TOWER_UPGRADE_PRICE)
+	
 	apply_level_stats()
 
 
@@ -41,6 +46,9 @@ func upgrade() -> void:
 	level += 1
 	apply_level_stats()
 	SignalManager.towers_changed.emit()
+	
+	GameManager.mana -= GameManager.TOWER_UPGRADE_PRICE
+	SignalManager.hud_update.emit()
 
 
 func apply_level_stats() -> void:
@@ -83,12 +91,14 @@ func toggle_menu() -> void:
 
 	state_menu.visible = !state_menu.visible
 	if state_menu.visible:
+		_update_upgrade_button()
 		move_to_front()
 
 
 func select_state(state_name: String, msg: Dictionary = {}) -> void:
 	state_machine.transition_to(state_name, msg)
-	toggle_menu()
+	state_menu.hide()
+	#toggle_menu()
 
 
 func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
@@ -141,9 +151,16 @@ func _on_btn_demolish_pressed():
 			demolish_tower += 1
 			btn_demolish.modulate = Color.FIREBRICK
 		3:
-			state_menu.queue_free()
 			select_state("Demolishing")
 
 
 func _on_tree_exited():
 	SignalManager.towers_changed.emit()
+
+func _update_upgrade_button() -> void:
+	btn_upgrade.disabled = GameManager.mana < GameManager.TOWER_UPGRADE_PRICE
+	
+	if btn_upgrade.disabled:
+		btn_upgrade.modulate = Color.WEB_GRAY
+	else:
+		btn_upgrade.modulate = Color.WHITE

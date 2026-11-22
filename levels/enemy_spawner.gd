@@ -1,9 +1,7 @@
 class_name EnemySpawner extends Marker2D
 
-signal all_waves_completed
-
 @export var waves: Array[WaveData] = []
-@export var initial_delay: float = 3.0
+@export var initial_delay: float = 0.1
 
 @onready var ground: TileMapLayer = $"../Map/Ground"
 @onready var enemies: Node2D = $"../Enemies"
@@ -11,19 +9,25 @@ signal all_waves_completed
 
 
 func _ready() -> void:
-	await get_tree().create_timer(initial_delay).timeout
+	await get_tree().create_timer(initial_delay, false).timeout
 	for i: int in waves.size():
-		lbl_wave.text = "Wave: " + str(i+1) + " / " + str(waves.size())
+		GameManager.wave = i + 1
+		GameManager.wave_total = waves.size()
+		SignalManager.hud_update.emit()
 		for group: SpawnGroup in waves[i].groups:
-			for _j: int in group.count:
+			for j: int in group.count:
 				if not is_inside_tree():
 					return
 				spawn(group.enemy_scene)
-				await get_tree().create_timer(group.interval).timeout
+				await get_tree().create_timer(group.interval, false).timeout
 		if i < waves.size() - 1 and is_inside_tree():
-			await get_tree().create_timer(waves[i].delay_after_wave).timeout
+			await get_tree().create_timer(waves[i].delay_after_wave, false).timeout
+			
+	while is_inside_tree() and get_tree().get_node_count_in_group("enemies") > 0:
+		await get_tree().process_frame
+		
 	if is_inside_tree():
-		all_waves_completed.emit()
+		GameManager.game_over()
 
 
 func spawn(scene: PackedScene) -> void:

@@ -1,7 +1,7 @@
 class_name EnemyMove extends EnemyState
 
 func enter(_msg := {}) -> void:
-	enemy.add_to_group("enemies")
+	#enemy.add_to_group("enemies")
 	enemy.animated_sprite.play("walk")
 	
 	enemy.set_collision_layer_value(5, true)

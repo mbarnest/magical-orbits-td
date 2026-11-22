@@ -411,6 +411,8 @@ texture = ExtResource("1_fqylt")
 hframes = 3
 
 [node name="GemSprite" type="AnimatedSprite2D" parent="." unique_id=513582247]
+z_index = 1
+position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_j8abd")
 animation = &"idle_lvl1"
 autoplay = "idle_lvl1"
@@ -485,10 +487,12 @@ texture_normal = ExtResource("11_m53j6")
 
 [node name="BtnOrbiting" type="TextureButton" parent="StateMenu/VBoxContainer" unique_id=1817701052]
 layout_mode = 2
+tooltip_text = "Orbit"
 texture_normal = ExtResource("12_m53j6")
 
 [node name="BtnTransferring" type="TextureButton" parent="StateMenu/VBoxContainer" unique_id=416612776]
 layout_mode = 2
+tooltip_text = "Transfer"
 texture_normal = ExtResource("13_m53j6")
 
 [node name="BtnDemolish" type="TextureButton" parent="StateMenu" unique_id=1301025587]
@@ -497,6 +501,7 @@ offset_left = 136.0
 offset_top = 132.0
 offset_right = 184.0
 offset_bottom = 180.0
+tooltip_text = "Demolish"
 texture_normal = ExtResource("15_fhyl5")
 
 [node name="BtnUpgrade" type="TextureButton" parent="StateMenu" unique_id=1204623493]
@@ -506,6 +511,7 @@ offset_top = 208.0
 offset_right = 148.0
 offset_bottom = 272.0
 scale = Vector2(0.5, 0.5)
+tooltip_text = "Upgrade"
 texture_normal = ExtResource("14_m53j6")
 stretch_mode = 0
 

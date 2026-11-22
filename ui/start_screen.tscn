@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://exryuid8tk7s"]
+
+[ext_resource type="Script" uid="uid://0xb51vc0qcvn" path="res://ui/start_screen.gd" id="1_s6cxg"]
+[ext_resource type="Theme" uid="uid://c25u1yr2s7vi2" path="res://assets/ui/theme_pixel.tres" id="2_50anp"]
+[ext_resource type="Texture2D" uid="uid://cdxsxgcbv8r0a" path="res://assets/ui/atlas.png" id="3_nledq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igmpp"]
+content_margin_left = 50.0
+content_margin_top = 10.0
+content_margin_right = 50.0
+content_margin_bottom = 30.0
+texture = ExtResource("3_nledq")
+texture_margin_left = 10.0
+texture_margin_top = 7.0
+texture_margin_right = 11.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(2, 2, 64, 28)
+
+[node name="StartScreen" type="CanvasLayer" unique_id=708747517]
+process_mode = 3
+script = ExtResource("1_s6cxg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1621734405]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=973294124]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -24.5
+offset_right = 82.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_50anp")
+theme_override_styles/panel = SubResource("StyleBoxTexture_igmpp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1180546905]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LblTitle" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1564674821]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Magical Orbits TD"
+
+[node name="BtnStart" type="Button" parent="PanelContainer/VBoxContainer" unique_id=423505141]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 96
+text = "Start Game"
+
+[node name="BtnExit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=799441270]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 96
+text = "Exit
+"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnStart" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnExit" to="." method="_on_btn_exit_pressed"]

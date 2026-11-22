@@ -7,13 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dqswdv7kq6j6e" path="res://assets/map/Overworld.png" id="3_pb8y7"]
 [ext_resource type="Script" uid="uid://cp87n5uljwup6" path="res://levels/enemy_spawner.gd" id="5_gjl0y"]
 [ext_resource type="Script" uid="uid://768auqbojxvn" path="res://levels/waves/wave_data.gd" id="6_d5x7l"]
-[ext_resource type="Script" uid="uid://2phumfj2be2c" path="res://levels/waves/spawn_group.gd" id="7_d7v53"]
 [ext_resource type="Resource" uid="uid://dlwdpgqmjo3m1" path="res://levels/waves/wave_01.tres" id="7_rtcij"]
-[ext_resource type="PackedScene" uid="uid://py2kh6rekykx" path="res://entities/enemies/units/leafbug.tscn" id="8_0qmeg"]
 [ext_resource type="Script" uid="uid://b37bjh3fwa5hn" path="res://levels/tower_placer.gd" id="8_d5x7l"]
+[ext_resource type="Resource" uid="uid://cyfy8uoomh8kx" path="res://levels/waves/wave_02.tres" id="8_mxp4k"]
 [ext_resource type="Script" uid="uid://croj2e3fn4gga" path="res://levels/hud.gd" id="9_rtcij"]
 [ext_resource type="Texture2D" uid="uid://c7v0d2wlcw07f" path="res://entities/towers/tower_range_circle.tres" id="9_ukwr8"]
-[ext_resource type="Theme" uid="uid://c25u1yr2s7vi2" path="res://assets/hud/theme_pixel.tres" id="11_hy0rb"]
+[ext_resource type="Theme" uid="uid://c25u1yr2s7vi2" path="res://assets/ui/theme_pixel.tres" id="11_hy0rb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjsbj"]
 texture = ExtResource("1_80vhd")
@@ -442,18 +441,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_mxp4k"]
-script = ExtResource("7_d7v53")
-enemy_scene = ExtResource("8_0qmeg")
-count = 100
-interval = 0.5
-metadata/_custom_type_script = "uid://2phumfj2be2c"
-
-[sub_resource type="Resource" id="Resource_hy0rb"]
-script = ExtResource("6_d5x7l")
-groups = Array[ExtResource("7_d7v53")]([SubResource("Resource_mxp4k")])
-metadata/_custom_type_script = "uid://768auqbojxvn"
-
 [node name="Level" type="Node2D" unique_id=1811116787]
 script = ExtResource("1_hjsbj")
 
@@ -510,7 +497,7 @@ script = ExtResource("3_cwqvt")
 
 [node name="EnemySpawner" type="Marker2D" parent="." unique_id=1537990598]
 script = ExtResource("5_gjl0y")
-waves = Array[ExtResource("6_d5x7l")]([SubResource("Resource_hy0rb"), ExtResource("7_rtcij")])
+waves = Array[ExtResource("6_d5x7l")]([ExtResource("7_rtcij"), ExtResource("8_mxp4k")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=642210875]
 position = Vector2(960, 540)
@@ -596,9 +583,9 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "People in town: 100"
 
-[node name="BtnExit" type="Button" parent="HUD/PanelContainer/HBoxContainer" unique_id=1222682421]
+[node name="BtnPause" type="Button" parent="HUD/PanelContainer/HBoxContainer" unique_id=1222682421]
 layout_mode = 2
-text = "Exit
+text = "Pause
 "
 
-[connection signal="pressed" from="HUD/PanelContainer/HBoxContainer/BtnExit" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HUD/PanelContainer/HBoxContainer/BtnPause" to="HUD" method="_on_btn_pause_pressed"]

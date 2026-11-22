@@ -1,20 +1,24 @@
 [gd_resource type="Theme" format=3 uid="uid://c25u1yr2s7vi2"]
 
-[ext_resource type="Texture2D" uid="uid://cdxsxgcbv8r0a" path="res://assets/hud/atlas.png" id="1_atlas"]
-[ext_resource type="FontFile" uid="uid://bb48ftef88sl1" path="res://assets/hud/m5x7.ttf" id="2_s37np"]
+[ext_resource type="Texture2D" uid="uid://cdxsxgcbv8r0a" path="res://assets/ui/atlas.png" id="1_jjhdo"]
+[ext_resource type="FontFile" uid="uid://bb48ftef88sl1" path="res://assets/ui/m5x7.ttf" id="2_wpmne"]
 
 [sub_resource type="StyleBoxTexture" id="sb__banner_scroll__normal"]
 content_margin_left = 10.0
 content_margin_top = 4.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 10.0
 texture_margin_right = 10.0
 region_rect = Rect2(68, 2, 48, 17)
 
 [sub_resource type="StyleBoxTexture" id="sb__button_primary__disabled"]
-texture = ExtResource("1_atlas")
+content_margin_left = 10.0
+content_margin_top = 1.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 5.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -28,7 +32,7 @@ content_margin_left = 7.0
 content_margin_top = 3.0
 content_margin_right = 8.0
 content_margin_bottom = 2.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 5.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -36,11 +40,11 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(160, 2, 40, 16)
 
 [sub_resource type="StyleBoxTexture" id="sb__button_primary__normal"]
-content_margin_left = 7.0
-content_margin_top = 3.0
-content_margin_right = 8.0
-content_margin_bottom = 2.0
-texture = ExtResource("1_atlas")
+content_margin_left = 15.0
+content_margin_top = 1.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -52,7 +56,7 @@ content_margin_left = 7.0
 content_margin_top = 3.0
 content_margin_right = 8.0
 content_margin_bottom = 2.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 5.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -60,11 +64,7 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(202, 2, 40, 16)
 
 [sub_resource type="StyleBoxTexture" id="sb__dialogue_box__normal"]
-content_margin_left = 14.0
-content_margin_top = 8.0
-content_margin_right = 15.0
-content_margin_bottom = 9.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 10.0
 texture_margin_top = 7.0
 texture_margin_right = 11.0
@@ -76,7 +76,7 @@ content_margin_left = 1.0
 content_margin_top = 2.0
 content_margin_right = 1.0
 content_margin_bottom = 2.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 1.0
 texture_margin_right = 1.0
 region_rect = Rect2(171, 32, 36, 4)
@@ -86,41 +86,51 @@ content_margin_left = 5.0
 content_margin_top = 1.0
 content_margin_right = 6.0
 content_margin_bottom = 0.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 3.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(73, 32, 36, 12)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jjhdo"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+texture = ExtResource("1_jjhdo")
+texture_margin_left = 10.0
+texture_margin_top = 7.0
+texture_margin_right = 11.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(2, 2, 64, 28)
+
 [sub_resource type="StyleBoxTexture" id="sb__bar_frame__normal"]
 content_margin_left = 3.0
 content_margin_top = 4.0
 content_margin_right = 3.0
 content_margin_bottom = 4.0
-texture = ExtResource("1_atlas")
+texture = ExtResource("1_jjhdo")
 texture_margin_left = 3.0
 texture_margin_right = 3.0
 region_rect = Rect2(111, 32, 40, 8)
 
 [sub_resource type="AtlasTexture" id="at__advance_arrow__frame0"]
-atlas = ExtResource("1_atlas")
+atlas = ExtResource("1_jjhdo")
 region = Rect2(153, 32, 7, 6)
 
 [sub_resource type="AtlasTexture" id="at__advance_arrow__frame1"]
-atlas = ExtResource("1_atlas")
+atlas = ExtResource("1_jjhdo")
 region = Rect2(162, 32, 7, 6)
 
 [sub_resource type="AtlasTexture" id="at__cursor_pointer__normal"]
-atlas = ExtResource("1_atlas")
+atlas = ExtResource("1_jjhdo")
 region = Rect2(61, 32, 10, 14)
 
 [sub_resource type="AtlasTexture" id="at__seal_intact__normal"]
-atlas = ExtResource("1_atlas")
+atlas = ExtResource("1_jjhdo")
 region = Rect2(44, 32, 15, 15)
 
 [resource]
-default_font = ExtResource("2_s37np")
+default_font = ExtResource("2_wpmne")
 default_font_size = 32
 BannerScroll/base_type = &"PanelContainer"
 BannerScroll/styles/panel = SubResource("sb__banner_scroll__normal")
@@ -149,7 +159,7 @@ NamePlate/styles/panel = SubResource("sb__nameplate__normal")
 NamePlateLabel/base_type = &"Label"
 NamePlateLabel/colors/font_color = Color(0.9686, 0.9843, 0.949, 1)
 Panel/styles/panel = SubResource("sb__dialogue_box__normal")
-PanelContainer/styles/panel = SubResource("sb__dialogue_box__normal")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_jjhdo")
 PrimaryButton/base_type = &"Button"
 PrimaryButton/colors/font_color = Color(0.9686, 0.9843, 0.949, 1)
 PrimaryButton/colors/font_disabled_color = Color(0.2392, 0.2824, 0.2745, 1)

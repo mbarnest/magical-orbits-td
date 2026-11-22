@@ -1,4 +1,7 @@
 extends Node2D
 
-func _on_button_pressed():
-	get_tree().quit()
+func _ready() -> void:
+	get_tree().paused = true
+	
+	var screen_start: Node = GameManager.SCENE_START.instantiate()
+	add_child(screen_start)

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://clksmtw4y8aef"]
+
+[ext_resource type="Script" uid="uid://dcioguugn68wq" path="res://ui/pause.gd" id="1_8aaw5"]
+[ext_resource type="Theme" uid="uid://c25u1yr2s7vi2" path="res://assets/ui/theme_pixel.tres" id="2_wn0le"]
+[ext_resource type="Texture2D" uid="uid://cdxsxgcbv8r0a" path="res://assets/ui/atlas.png" id="3_wn0le"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_foqgb"]
+content_margin_left = 50.0
+content_margin_top = 10.0
+content_margin_right = 50.0
+content_margin_bottom = 30.0
+texture = ExtResource("3_wn0le")
+texture_margin_left = 10.0
+texture_margin_top = 7.0
+texture_margin_right = 11.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(2, 2, 64, 28)
+
+[node name="Pause" type="CanvasLayer" unique_id=163628209]
+process_mode = 3
+script = ExtResource("1_8aaw5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=535720969]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1965396123]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.5
+offset_top = -144.5
+offset_right = 230.5
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_wn0le")
+theme_override_styles/panel = SubResource("StyleBoxTexture_foqgb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=344946509]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LblPause" type="Label" parent="PanelContainer/VBoxContainer" unique_id=461467642]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnResume" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1115671137]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Resume"
+
+[node name="BtnExit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=433717242]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnExit" to="." method="_on_btn_exit_pressed"]

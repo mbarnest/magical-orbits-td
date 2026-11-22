@@ -3,8 +3,9 @@ class_name TowerDemolishing extends TowerState
 func enter(_msg: Dictionary = {}) -> void:
 	tower.state_label.text = "Demolishing"
 	
-	SignalManager.tower_demolished.emit(tower)
+	tower.btn_tower.disabled = true
 	
+	tower.state_menu.hide()
 	tower.load_bar.hide()
 	tower.gem_sprite.hide()
 	
@@ -16,12 +17,15 @@ func enter(_msg: Dictionary = {}) -> void:
 		tower.unregister_orbiting_enemy(enemy)
 		enemy.state_machine.transition_to("Die")
 
+	SignalManager.tower_demolished.emit(tower)
+	
 	var tween_tower = create_tween()
 	tween_tower.tween_property(tower.base_sprite, "scale", Vector2.ZERO, 0.3)
 	await tween_tower.finished
-
+	
 	tower.explosion.emitting = true
 	await tower.explosion.finished
+	
 	
 	tower.queue_free()
 

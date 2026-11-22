@@ -1,6 +1,7 @@
 class_name EnemyDie extends EnemyState
 
 func enter(_msg := {}) -> void:
+	GameManager.mana += enemy.mana
 	SignalManager.hud_update.emit()
 
 	enemy.set_deferred("collision_layer", 0)

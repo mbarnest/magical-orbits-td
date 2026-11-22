@@ -52,6 +52,8 @@ func place_tower(cell: Vector2i) -> void:
 	var tower := tower_scene.instantiate() as Tower
 	tower.global_position = ground.map_to_local(cell + Vector2i.UP)
 	towers.add_child(tower)
+	GameManager.mana -= GameManager.TOWER_PRICE
+	SignalManager.hud_update.emit()
 
 	#occupied.append_array([cell, cell + Vector2i.UP])
 	range_preview.hide()

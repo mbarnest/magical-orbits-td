@@ -22,7 +22,7 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m53j6"]
 bg_color = Color(0.78431374, 0.19607843, 0.19607843, 1)
 
-[node name="Enemy" type="Area2D" unique_id=1016837423]
+[node name="Enemy" type="Area2D" unique_id=1016837423 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_yc03e")
@@ -74,7 +74,3 @@ offset_right = 25.0
 offset_bottom = -20.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_m53j6")
 show_percentage = false
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=305132257]
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
