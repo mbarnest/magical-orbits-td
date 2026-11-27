@@ -1,5 +1,7 @@
 class_name TowerDemolishing extends TowerState
 
+const SFX_DEMOLISHING = preload("res://assets/sfx/Retro_8bit_8bitShoot_003.mp3")
+
 func enter(_msg: Dictionary = {}) -> void:
 	tower.state_label.text = "Demolishing"
 	
@@ -23,6 +25,7 @@ func enter(_msg: Dictionary = {}) -> void:
 	tween_tower.tween_property(tower.base_sprite, "scale", Vector2.ZERO, 0.3)
 	await tween_tower.finished
 	
+	AudioManager.play_sfx(SFX_DEMOLISHING)
 	tower.explosion.emitting = true
 	await tower.explosion.finished
 	

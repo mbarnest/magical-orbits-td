@@ -129,9 +129,10 @@ animations = [{
 }]
 
 [node name="Scorpion" unique_id=1016837423 instance=ExtResource("1_8p2wk")]
-mass = 2.0
-health = 65000.0
-mana = 30
+speed = 95.0
+mass = 4.5
+health = 1300000.0
+mana = 4
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
 sprite_frames = SubResource("SpriteFrames_aahwe")

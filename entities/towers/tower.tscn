@@ -394,6 +394,7 @@ metadata/_edit_group_ = true
 
 [node name="TowerRange" type="Area2D" parent="." unique_id=1668035683]
 z_index = -1
+z_as_relative = false
 position = Vector2(0, 48)
 collision_mask = 2
 

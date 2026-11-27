@@ -4,13 +4,15 @@ var tower: Tower
 
 func enter(msg := {}) -> void:
 	tower = msg.tower
-	
+	enemy.add_to_group("enemies")
+	enemy.set_collision_layer_value(5, true)
 	enemy.state_label.text = enemy.state_machine.current_state.name
 	SignalManager.hud_update.emit()
 
 
 func exit() -> void:
-	pass
+	enemy.remove_from_group("enemies")
+	enemy.set_collision_layer_value(5, false)
 
 func physics_update(delta: float) -> void:
 	var vector_to_tower: Vector2 = tower.orbit_center.global_position - enemy.global_position

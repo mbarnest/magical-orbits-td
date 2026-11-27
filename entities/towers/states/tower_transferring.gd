@@ -38,7 +38,8 @@ func physics_update(_delta: float) -> void:
 			continue
 
 		var vel: Vector2 = enemy.state_machine.current_state.get_tangential_velocity()
-		var to_target: Vector2 = target_tower.orbit_center.global_position - enemy.global_position
+		#var to_target: Vector2 = target_tower.orbit_center.global_position - enemy.global_position
+		var to_target: Vector2 = target_tower.orbit_center.global_position - enemy.global_position + enemy.global_position.direction_to(target_tower.orbit_center.global_position).orthogonal() * GameManager.TOWER_MIN_DISTANCE
 
 		if abs(vel.angle_to(to_target)) <= deg_to_rad(launch_window_angle):
 			enemy.state_machine.transition_to("Transferred", {

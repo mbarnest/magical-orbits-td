@@ -6,9 +6,8 @@ const SCENE_GAME_OVER = preload("res://ui/game_over.tscn")
 
 const G: float = 10000.0
 
-const TOWER_MIN_DISTANCE: float = 100.0
+const TOWER_MIN_DISTANCE: float = 80.0
 const TOWER_PRICE: int = 1000
-
 const MAX_TRANSFER_SPEED:float = 1500.0
 const MAX_ORBIT_VELOCITY: float = 20.0
 

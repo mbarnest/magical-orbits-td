@@ -154,8 +154,9 @@ height = 46.0
 
 [node name="Firebug" unique_id=1204108137 instance=ExtResource("1_px7rq")]
 speed = 110.0
-health = 20000.0
-mana = 15
+mass = 1.5
+health = 320000.0
+mana = 3
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]

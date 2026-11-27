@@ -136,10 +136,10 @@ animations = [{
 }]
 
 [node name="Voidbutterfly" unique_id=1016837423 instance=ExtResource("1_h06qn")]
-speed = 120.0
-mass = 3.0
-health = 110000.0
-mana = 60
+speed = 115.0
+mass = 9.0
+health = 5500000.0
+mana = 5
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
 z_index = 2

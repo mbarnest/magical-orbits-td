@@ -1,7 +1,10 @@
 class_name TowerPlacer extends Control
 
-const COLOR_VALID := Color(0.2, 1, 0.2, 0.2)
-const COLOR_INVALID := Color(1, 0.2, 0.2, 0.2)
+
+const SFX_COINS: Resource = preload("res://assets/sfx/Pickups_Items_TreasureChest_002.mp3")
+
+const COLOR_VALID: Color = Color(0.2, 1, 0.2, 0.2)
+const COLOR_INVALID: Color = Color(1, 0.2, 0.2, 0.2)
 
 @export var tower_scene: PackedScene
 
@@ -54,6 +57,7 @@ func place_tower(cell: Vector2i) -> void:
 	towers.add_child(tower)
 	GameManager.mana -= GameManager.TOWER_PRICE
 	SignalManager.hud_update.emit()
+	AudioManager.play_sfx(SFX_COINS)
 
 	#occupied.append_array([cell, cell + Vector2i.UP])
 	range_preview.hide()
