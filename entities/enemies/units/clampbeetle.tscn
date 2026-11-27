@@ -164,6 +164,10 @@ animations = [{
 }]
 
 [node name="Clampbeetle" unique_id=1016837423 instance=ExtResource("1_x7tiu")]
+speed = 65.0
+mass = 4.0
+health = 130000.0
+mana = 50
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
 z_index = 2

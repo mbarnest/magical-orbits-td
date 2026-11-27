@@ -42,5 +42,13 @@ https://docs.godotengine.org/en/stable/tutorials/editor/project\_manager.html#op
 [Zelda-like tilesets and sprites](https://opengameart.org/content/zelda-like-tilesets-and-sprites) by **ArMM198** (License: CC0).
 
 
+**UI Theme:**
+[UI Kit Sampler: 56 Free Pixel UI Themes](https://csaf.itch.io/ui-kit-sampler-12-free-pixel-ui-themes) by CSAF (License: Custom Free / Royalty-Free, no attribution required).
+
+
 **UI Icons:**
 [Game-icons.net](https://game-icons.net) by various authors (License: CC BY 3.0).
+
+
+**Font:**
+[m5x7](https://managore.itch.io/m5x7) by Daniel Linssen (License: CC0)

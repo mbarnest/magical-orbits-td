@@ -5,6 +5,7 @@ var tower: Tower
 func enter(msg := {}) -> void:
 	tower = msg.tower
 	
+	enemy.state_label.text = enemy.state_machine.current_state.name
 	SignalManager.hud_update.emit()
 
 

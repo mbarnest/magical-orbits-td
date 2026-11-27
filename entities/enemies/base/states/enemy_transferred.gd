@@ -6,6 +6,9 @@ func enter(msg := {}) -> void:
 	target_tower = msg.target_tower
 	enemy.velocity = msg.velocity
 	
+	enemy.state_label.text = enemy.state_machine.current_state.name
+
+	
 	enemy.animated_sprite.self_modulate = Color.GREEN
 	
 	SignalManager.hud_update.emit()

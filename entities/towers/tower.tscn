@@ -11,12 +11,12 @@
 [ext_resource type="Script" uid="uid://clue16glmevnv" path="res://entities/towers/states/tower_orbiting.gd" id="8_wfufn"]
 [ext_resource type="Script" uid="uid://coyd6kj08w2dn" path="res://entities/towers/states/tower_transferring.gd" id="9_klv4w"]
 [ext_resource type="Texture2D" uid="uid://dcffne5sf848u" path="res://assets/towers/ui_target.png" id="10_it6y3"]
-[ext_resource type="Texture2D" uid="uid://r1vrojtt0847" path="res://assets/towers/ui_attacking_48.png" id="11_m53j6"]
+[ext_resource type="Texture2D" uid="uid://r1vrojtt0847" path="res://assets/towers/ui_attacking.png" id="11_m53j6"]
 [ext_resource type="Script" uid="uid://7xl77s1fu0bk" path="res://entities/towers/states/tower_demolishing.gd" id="11_tqyko"]
-[ext_resource type="Texture2D" uid="uid://r6yg20lg0mfu" path="res://assets/towers/ui_orbiting_48.png" id="12_m53j6"]
-[ext_resource type="Texture2D" uid="uid://cktx68f2eiqfk" path="res://assets/towers/ui_transferring_48.png" id="13_m53j6"]
+[ext_resource type="Texture2D" uid="uid://r6yg20lg0mfu" path="res://assets/towers/ui_orbiting.png" id="12_m53j6"]
+[ext_resource type="Texture2D" uid="uid://cktx68f2eiqfk" path="res://assets/towers/ui_transferring.png" id="13_m53j6"]
 [ext_resource type="Texture2D" uid="uid://c7rq58px8ixfo" path="res://assets/towers/ui_upgrade.png" id="14_m53j6"]
-[ext_resource type="Texture2D" uid="uid://84cvbscghe76" path="res://assets/towers/ui_demolish_48.png" id="15_fhyl5"]
+[ext_resource type="Texture2D" uid="uid://84cvbscghe76" path="res://assets/towers/ui_demolish.png" id="15_fhyl5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lka76"]
 resource_local_to_scene = true
@@ -449,7 +449,7 @@ offset_bottom = 123.0
 text = "Attacking"
 horizontal_alignment = 1
 
-[node name="btnTower" type="Button" parent="." unique_id=376559808]
+[node name="BtnTower" type="Button" parent="." unique_id=376559808]
 offset_left = -32.0
 offset_right = 32.0
 offset_bottom = 96.0
@@ -515,7 +515,7 @@ tooltip_text = "Upgrade"
 texture_normal = ExtResource("14_m53j6")
 stretch_mode = 0
 
-[node name="btnTarget" type="TextureButton" parent="." unique_id=714129651]
+[node name="BtnTarget" type="TextureButton" parent="." unique_id=714129651]
 visible = false
 z_index = 2
 offset_left = -38.0
@@ -528,10 +528,10 @@ texture_normal = ExtResource("10_it6y3")
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="area_entered" from="TowerRange" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="TowerRange" to="." method="_on_range_area_exited"]
-[connection signal="pressed" from="btnTower" to="." method="_on_btn_tower_pressed"]
+[connection signal="pressed" from="BtnTower" to="." method="_on_btn_tower_pressed"]
 [connection signal="pressed" from="StateMenu/VBoxContainer/BtnAttacking" to="." method="_on_btn_attacking_pressed"]
 [connection signal="pressed" from="StateMenu/VBoxContainer/BtnOrbiting" to="." method="_on_btn_orbiting_pressed"]
 [connection signal="pressed" from="StateMenu/VBoxContainer/BtnTransferring" to="." method="_on_btn_transferring_pressed"]
 [connection signal="pressed" from="StateMenu/BtnDemolish" to="." method="_on_btn_demolish_pressed"]
 [connection signal="pressed" from="StateMenu/BtnUpgrade" to="." method="_on_btn_upgrade_pressed"]
-[connection signal="pressed" from="btnTarget" to="." method="_on_btn_target_pressed"]
+[connection signal="pressed" from="BtnTarget" to="." method="_on_btn_target_pressed"]

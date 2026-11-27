@@ -5,7 +5,7 @@ extends CanvasLayer
 
 func _ready():
 	if GameManager.people_town > 0:
-		lbl_game_over.text = "¡Congratulations!"
+		lbl_game_over.text = "Congratulations!"
 
 func _on_btn_try_again_pressed():
 	GameManager.restart_game()

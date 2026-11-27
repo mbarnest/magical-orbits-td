@@ -3,6 +3,8 @@ class_name EnemyLaunched extends EnemyState
 var launch_velocity: Vector2
 
 func enter(msg: Dictionary = {}) -> void:
+	enemy.state_label.text = enemy.state_machine.current_state.name
+	
 	enemy.area_entered.connect(_on_area_entered)
 	SignalManager.hud_update.emit()
 	

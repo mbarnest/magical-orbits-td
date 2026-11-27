@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fautgeitany6"
-path="res://.godot/imported/ui_transferring_64.png-940526e5974c2f6f072774fd9db0f910.ctex"
+uid="uid://cktx68f2eiqfk"
+path="res://.godot/imported/ui_transferring.png-f6828c0932d5d23c485a2c8a8067fae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/towers/ui_transferring_64.png"
-dest_files=["res://.godot/imported/ui_transferring_64.png-940526e5974c2f6f072774fd9db0f910.ctex"]
+source_file="res://assets/towers/ui_transferring.png"
+dest_files=["res://.godot/imported/ui_transferring.png-f6828c0932d5d23c485a2c8a8067fae8.ctex"]
 
 [params]
 

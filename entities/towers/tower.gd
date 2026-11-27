@@ -1,9 +1,9 @@
 class_name Tower extends Node2D
 
 const LEVELS : Dictionary = {
-	1: { "radius": 180.0, "mass": 1000.0, "max_attract_mass": 10.0 },
-	2: { "radius": 230.0, "mass": 2000.0, "max_attract_mass": 20.0 },
-	3: { "radius": 300.0, "mass": 3000.0, "max_attract_mass": 30.0 },
+	1: { "radius": 180.0, "mass": 1000.0, "max_attract_mass": 10.0, "upgrade_cost": 0 },
+	2: { "radius": 230.0, "mass": 2200.0, "max_attract_mass": 20.0, "upgrade_cost": 500 },
+	3: { "radius": 300.0, "mass": 4200.0, "max_attract_mass": 30.0, "upgrade_cost": 750 },
 }
 const ORBIT_MARGIN: int = 32
 
@@ -23,21 +23,19 @@ var demolish_tower: int = 1
 @onready var orbit_center: Marker2D = $TowerRange/OrbitCenter
 @onready var base_sprite: Sprite2D = $BaseSprite
 @onready var gem_sprite: AnimatedSprite2D = $GemSprite
-@onready var btn_target: TextureButton = $btnTarget
+@onready var btn_target: TextureButton = $BtnTarget
 @onready var btn_upgrade: TextureButton = $StateMenu/BtnUpgrade
 @onready var btn_demolish: TextureButton = $StateMenu/BtnDemolish
 @onready var load_bar: ProgressBar = $LoadBar
 @onready var tower_range = $TowerRange
 @onready var explosion = $Explosion
-@onready var btn_tower = $btnTower
+@onready var btn_tower = $BtnTower
 
 
 func _ready() -> void:
 	state_label.visible = GameManager.show_debug
 	SignalManager.transfer_mode_changed.connect(_on_transfer_mode_changed)
 	SignalManager.hud_update.connect(_update_upgrade_button)
-	
-	btn_upgrade.tooltip_text = "Upgrade. Cost: " + str(GameManager.TOWER_UPGRADE_PRICE)
 	
 	apply_level_stats()
 
@@ -47,7 +45,7 @@ func upgrade() -> void:
 	apply_level_stats()
 	SignalManager.towers_changed.emit()
 	
-	GameManager.mana -= GameManager.TOWER_UPGRADE_PRICE
+	GameManager.mana -= get_upgrade_cost()
 	SignalManager.hud_update.emit()
 
 
@@ -91,6 +89,7 @@ func toggle_menu() -> void:
 
 	state_menu.visible = !state_menu.visible
 	if state_menu.visible:
+		btn_upgrade.tooltip_text = "Upgrade. Cost: " + str(get_upgrade_cost())
 		_update_upgrade_button()
 		move_to_front()
 
@@ -100,6 +99,10 @@ func select_state(state_name: String, msg: Dictionary = {}) -> void:
 	state_menu.hide()
 	#toggle_menu()
 
+func get_upgrade_cost() -> int:
+	if level < LEVELS.size():
+		return LEVELS[level + 1].upgrade_cost
+	return 0
 
 func _on_transfer_mode_changed(is_active: bool, origin: Tower) -> void:
 	if origin.global_position.distance_to(global_position) > origin.get_range_radius():
@@ -158,7 +161,7 @@ func _on_tree_exited():
 	SignalManager.towers_changed.emit()
 
 func _update_upgrade_button() -> void:
-	btn_upgrade.disabled = GameManager.mana < GameManager.TOWER_UPGRADE_PRICE
+	btn_upgrade.disabled = GameManager.mana < get_upgrade_cost()
 	
 	if btn_upgrade.disabled:
 		btn_upgrade.modulate = Color.WEB_GRAY

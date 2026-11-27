@@ -9,6 +9,7 @@ class_name EnemySpawner extends Marker2D
 
 
 func _ready() -> void:
+	waves = WaveLoader.create_waves()
 	await get_tree().create_timer(initial_delay, false).timeout
 	for i: int in waves.size():
 		GameManager.wave = i + 1

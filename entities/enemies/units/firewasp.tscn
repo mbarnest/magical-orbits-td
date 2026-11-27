@@ -157,6 +157,10 @@ animations = [{
 }]
 
 [node name="Firewasp" unique_id=1016837423 instance=ExtResource("1_d53sn")]
+speed = 155.0
+mass = 1.5
+health = 40000.0
+mana = 28
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
 z_index = 2

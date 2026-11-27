@@ -171,6 +171,9 @@ animations = [{
 }]
 
 [node name="FlyingLocust" unique_id=1016837423 instance=ExtResource("1_argk4")]
+speed = 130.0
+health = 25000.0
+mana = 18
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
 z_index = 2

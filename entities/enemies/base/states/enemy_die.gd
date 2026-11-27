@@ -4,6 +4,8 @@ func enter(_msg := {}) -> void:
 	GameManager.mana += enemy.mana
 	SignalManager.hud_update.emit()
 
+	enemy.state_label.text = enemy.state_machine.current_state.name
+
 	enemy.set_deferred("collision_layer", 0)
 	enemy.set_deferred("collision_mask", 0)
 	

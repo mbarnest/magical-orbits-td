@@ -10,6 +10,8 @@ func enter(msg: Dictionary = {}) -> void:
 	tower = msg.tower
 	tower.register_orbiting_enemy(enemy)
 	
+	enemy.state_label.text = enemy.state_machine.current_state.name
+	
 	enemy.health_bar.hide()
 	enemy.animated_sprite.self_modulate = Color.DODGER_BLUE
 	
