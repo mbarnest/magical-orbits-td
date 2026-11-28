@@ -9,7 +9,7 @@ const G: float = 10000.0
 const TOWER_MIN_DISTANCE: float = 80.0
 const TOWER_PRICE: int = 1000
 const MAX_TRANSFER_SPEED:float = 1500.0
-const MAX_ORBIT_VELOCITY: float = 20.0
+const MAX_ORBIT_VELOCITY: float = 15.0
 
 var show_debug: bool
 var people_town: int

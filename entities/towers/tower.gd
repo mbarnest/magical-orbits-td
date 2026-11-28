@@ -2,9 +2,9 @@ class_name Tower extends Node2D
 
 const SFX_COINS: Resource = preload("res://assets/sfx/Pickups_Items_TreasureChest_002.mp3")
 const LEVELS : Dictionary = {
-	1: { "radius": 180.0, "mass": 1000.0, "max_attract_mass": 3.0, "upgrade_cost": 0 },
-	2: { "radius": 230.0, "mass": 2200.0, "max_attract_mass": 6.0, "upgrade_cost": 500 },
-	3: { "radius": 300.0, "mass": 4200.0, "max_attract_mass": 10.0, "upgrade_cost": 750 },
+	1: { "radius": 180.0, "mass": 500.0, "max_attract_mass": 5.0, "upgrade_cost": 0 },
+	2: { "radius": 230.0, "mass": 1000.0, "max_attract_mass": 10.0, "upgrade_cost": 1000 },
+	3: { "radius": 300.0, "mass": 2000.0, "max_attract_mass": 15.0, "upgrade_cost": 2000 },
 }
 const ORBIT_MARGIN: int = 32
 
@@ -101,6 +101,7 @@ func select_state(state_name: String, msg: Dictionary = {}) -> void:
 	state_machine.transition_to(state_name, msg)
 	state_menu.hide()
 	#toggle_menu()
+
 
 func get_upgrade_cost() -> int:
 	if level < LEVELS.size():

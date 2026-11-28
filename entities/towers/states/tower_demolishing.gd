@@ -3,6 +3,7 @@ class_name TowerDemolishing extends TowerState
 const SFX_DEMOLISHING = preload("res://assets/sfx/Retro_8bit_8bitShoot_003.mp3")
 
 func enter(_msg: Dictionary = {}) -> void:
+	GameManager.mana += GameManager.TOWER_PRICE
 	tower.state_label.text = "Demolishing"
 	
 	tower.btn_tower.disabled = true
@@ -29,6 +30,7 @@ func enter(_msg: Dictionary = {}) -> void:
 	tower.explosion.emitting = true
 	await tower.explosion.finished
 	
+	SignalManager.hud_update.emit()
 	
 	tower.queue_free()
 

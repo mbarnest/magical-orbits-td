@@ -68,6 +68,7 @@ func set_tower_weight(tower: Tower) -> void:
 		for y: int in range(AREA.position.y, AREA.end.y):
 			var dist_px: float = ground.map_to_local(Vector2i(x, y)).distance_to(center)
 			if dist_px <= radius + tile_size:
+			#if dist_px <= radius:
 				influence[x][y] += i_max / (1.0 + attenuation_k * (dist_px / tile_size))
 
 func can_place(cell: Vector2i) -> bool:

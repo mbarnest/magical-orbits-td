@@ -144,9 +144,8 @@ animations = [{
 
 [node name="MagmaCrab" unique_id=1016837423 instance=ExtResource("1_yj1c6")]
 speed = 50.0
-mass = 16.0
-health = 28000000.0
-mana = 12
+mass = 11.0
+health = 8000000.0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=871046538]
 sprite_frames = SubResource("SpriteFrames_xcfcd")

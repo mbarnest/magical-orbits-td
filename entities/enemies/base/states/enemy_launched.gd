@@ -34,6 +34,6 @@ func physics_update(_delta: float) -> void:
 func _on_area_entered(enemy_hitted: Enemy) -> void:
 	var damage = 0.5 * enemy.mass * pow(launch_velocity.length(), 2)
 	enemy_hitted.take_damage(damage)
-	
+
 	AudioManager.play_sfx(SFX_HIT)
 	enemy.queue_free()

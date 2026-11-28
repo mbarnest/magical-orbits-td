@@ -1,6 +1,6 @@
 class_name TowerAttacking extends TowerState
 
-@export_range(0.1, 30.0) var launch_window_angle: float = 30.0
+@export_range(0.1, 30.0) var launch_window_angle: float = 5.0
 var target: Enemy
 
 func enter(_msg := {}) -> void:
